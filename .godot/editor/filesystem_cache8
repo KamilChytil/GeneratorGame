@@ -1,0 +1,12 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1713305846
+Button.cs::CSharpScript::-1::1713301720::0::1::::<>Node2D<>::
+close_button_prefab.tscn::PackedScene::8406529020489059273::1713305852::0::1::::<><>::uid://et4o5hy5xibo::::res://icon.svg<>res://PuzzlePrefab.cs
+Game_map.png::CompressedTexture2D::3058359275051309291::1713287077::1713287077::1::::<><>::
+icon.svg::CompressedTexture2D::321765933429750056::1713277104::1713277114::1::::<><>::
+main.tscn::PackedScene::5686374501450236163::1713305852::0::1::::<><>::res://Button.cs<>uid://dr1gkmkhl0x18::::res://close_button_prefab.tscn<>res://PuzzlePrefab.cs<>uid://et4o5hy5xibo::::res://icon.svg<>res://MathPuzzle.cs<>res://PuzzlesCloseInstances.cs<>uid://bjtqy3m0rs268::::res://Game_map.png
+MathPuzzle.cs::CSharpScript::-1::1713305378::0::1::::<>Node2D<>::
+Puzzle.cs::CSharpScript::-1::1713292049::0::1::::<>Node2D<>::
+PuzzlePrefab.cs::CSharpScript::-1::1713282748::0::1::::<>Node2D<>::
+PuzzlesCloseInstances.cs::CSharpScript::-1::1713301256::0::1::::<>Node2D<>::
+::res://Scripts/::1713305846

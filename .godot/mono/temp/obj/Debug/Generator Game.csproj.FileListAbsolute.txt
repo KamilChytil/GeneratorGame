@@ -1,0 +1,17 @@
+C:\Hry\Godot\GeneratorGame\.godot\mono\temp\obj\Debug\Generator Game.csproj.AssemblyReference.cache
+C:\Hry\Godot\GeneratorGame\.godot\mono\temp\obj\Debug\Generator Game.GeneratedMSBuildEditorConfig.editorconfig
+C:\Hry\Godot\GeneratorGame\.godot\mono\temp\obj\Debug\Generator Game.AssemblyInfoInputs.cache
+C:\Hry\Godot\GeneratorGame\.godot\mono\temp\obj\Debug\Generator Game.AssemblyInfo.cs
+C:\Hry\Godot\GeneratorGame\.godot\mono\temp\obj\Debug\Generator Game.csproj.CoreCompileInputs.cache
+C:\Hry\Godot\GeneratorGame\.godot\mono\temp\bin\Debug\Generator Game.deps.json
+C:\Hry\Godot\GeneratorGame\.godot\mono\temp\bin\Debug\Generator Game.runtimeconfig.json
+C:\Hry\Godot\GeneratorGame\.godot\mono\temp\bin\Debug\Generator Game.dll
+C:\Hry\Godot\GeneratorGame\.godot\mono\temp\bin\Debug\Generator Game.pdb
+C:\Hry\Godot\GeneratorGame\.godot\mono\temp\bin\Debug\GodotSharp.dll
+C:\Hry\Godot\GeneratorGame\.godot\mono\temp\bin\Debug\GodotSharpEditor.dll
+C:\Hry\Godot\GeneratorGame\.godot\mono\temp\obj\Debug\Generator Game.csproj.CopyComplete
+C:\Hry\Godot\GeneratorGame\.godot\mono\temp\obj\Debug\Generator Game.dll
+C:\Hry\Godot\GeneratorGame\.godot\mono\temp\obj\Debug\refint\Generator Game.dll
+C:\Hry\Godot\GeneratorGame\.godot\mono\temp\obj\Debug\Generator Game.pdb
+C:\Hry\Godot\GeneratorGame\.godot\mono\temp\obj\Debug\Generator Game.genruntimeconfig.cache
+C:\Hry\Godot\GeneratorGame\.godot\mono\temp\obj\Debug\ref\Generator Game.dll

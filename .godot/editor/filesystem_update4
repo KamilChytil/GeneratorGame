@@ -1,0 +1,8 @@
+res://main.tscn
+res://close_button_prefab.tscn
+res://Scripts/Button.cs
+res://Scripts/MathPuzzle.cs
+res://Scripts/Puzzle.cs
+res://Scripts/PuzzlePrefab.cs
+res://Scripts/PuzzlesCloseInstances.cs
+res://Scripts/PuzzlesData.cs

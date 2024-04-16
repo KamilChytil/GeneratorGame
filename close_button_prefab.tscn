@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://dr1gkmkhl0x18"]
+
+[ext_resource type="Texture2D" uid="uid://et4o5hy5xibo" path="res://icon.svg" id="1_j8uw5"]
+[ext_resource type="Script" path="res://Scripts/PuzzlePrefab.cs" id="1_wm5rw"]
+
+[node name="PuzzlePrefab" type="Node2D" node_paths=PackedStringArray("puzzlePrefab")]
+script = ExtResource("1_wm5rw")
+puzzlePrefab = NodePath(".")
+
+[node name="BackButton" type="Button" parent="."]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 1256.0
+offset_bottom = 664.0
+
+[node name="PuzzleScript" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="PuzzleScript"]
+position = Vector2(585, 326)
+scale = Vector2(4.9209, 4.3208)
+texture = ExtResource("1_j8uw5")
+
+[node name="Button" type="Button" parent="PuzzleScript"]
+offset_left = 320.0
+offset_top = 505.0
+offset_right = 384.0
+offset_bottom = 565.0
+
+[node name="Button2" type="Button" parent="PuzzleScript"]
+offset_left = 426.0
+offset_top = 508.0
+offset_right = 490.0
+offset_bottom = 568.0
+
+[node name="Button3" type="Button" parent="PuzzleScript"]
+offset_left = 545.0
+offset_top = 511.0
+offset_right = 609.0
+offset_bottom = 571.0
+
+[node name="Button4" type="Button" parent="PuzzleScript"]
+offset_left = 664.0
+offset_top = 507.0
+offset_right = 728.0
+offset_bottom = 567.0
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
