@@ -66,7 +66,7 @@ position = Vector2(545, 332)
 scale = Vector2(4.9209, 4.3208)
 texture = ExtResource("2_ej384")
 
-[node name="Button" type="Button" parent="PuzzlesCloseInstances/PuzzleMathPrefab/PuzzleMathScript"]
+[node name="NotClicButton" type="Button" parent="PuzzlesCloseInstances/PuzzleMathPrefab/PuzzleMathScript"]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 offset_left = 230.0
