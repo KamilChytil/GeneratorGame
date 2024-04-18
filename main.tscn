@@ -1,20 +1,29 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnar00m6ljcit"]
+[gd_scene load_steps=10 format=3 uid="uid://cnar00m6ljcit"]
 
-[ext_resource type="Script" path="res://Scripts/Button.cs" id="1_brk5g"]
 [ext_resource type="Script" path="res://Scripts/PuzzlesData.cs" id="1_n5gj1"]
-[ext_resource type="PackedScene" uid="uid://dr1gkmkhl0x18" path="res://close_button_prefab.tscn" id="2_1jbwp"]
-[ext_resource type="Script" path="res://Scripts/PuzzlePrefab.cs" id="2_3h0xo"]
 [ext_resource type="Texture2D" uid="uid://et4o5hy5xibo" path="res://icon.svg" id="2_ej384"]
+[ext_resource type="Script" path="res://GameManager.cs" id="2_vhtfj"]
+[ext_resource type="Script" path="res://Scripts/OpenPuzzles.cs" id="3_a40v4"]
 [ext_resource type="Script" path="res://Scripts/MathPuzzle.cs" id="3_oa3bw"]
 [ext_resource type="Script" path="res://Scripts/PuzzlesCloseInstances.cs" id="3_q8bhb"]
+[ext_resource type="Script" path="res://Scripts/BackButtonClick.cs" id="5_kvdyx"]
 [ext_resource type="Texture2D" uid="uid://bjtqy3m0rs268" path="res://Game_map.png" id="6_k8r3n"]
+[ext_resource type="Script" path="res://LightPuzzle.cs" id="8_wd58b"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Scripts" type="Node2D" parent="."]
 
-[node name="PuzzlesData" type="Node2D" parent="Scripts"]
+[node name="PuzzlesData" type="Node2D" parent="Scripts" node_paths=PackedStringArray("buttonsOpenPuzzle")]
 script = ExtResource("1_n5gj1")
+buttonsOpenPuzzle = [NodePath("../../ButtonManager/OpenButtonPuzzles/OpenMathButton"), NodePath("../../ButtonManager/OpenButtonPuzzles/OpenLightButton")]
+
+[node name="GameManager" type="Node2D" parent="Scripts" node_paths=PackedStringArray("timer")]
+script = ExtResource("2_vhtfj")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="Scripts/GameManager"]
+process_callback = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(553, 322)
@@ -22,11 +31,13 @@ texture = ExtResource("6_k8r3n")
 
 [node name="ButtonManager" type="Node2D" parent="."]
 
-[node name="Button" type="Node2D" parent="ButtonManager"]
+[node name="OpenButtonPuzzles" type="Node2D" parent="ButtonManager"]
 position = Vector2(0, -2)
-script = ExtResource("1_brk5g")
+script = ExtResource("3_a40v4")
 
-[node name="Button" type="Button" parent="ButtonManager/Button"]
+[node name="OpenMathButton" type="Node2D" parent="ButtonManager/OpenButtonPuzzles"]
+
+[node name="OpenMathButton" type="Button" parent="ButtonManager/OpenButtonPuzzles/OpenMathButton"]
 offset_left = 59.0
 offset_top = 45.0
 offset_right = 459.0
@@ -34,7 +45,9 @@ offset_bottom = 212.0
 text = "Button
 "
 
-[node name="Button3" type="Button" parent="ButtonManager/Button"]
+[node name="OpenLightButton" type="Node2D" parent="ButtonManager/OpenButtonPuzzles"]
+
+[node name="OpenLightButton" type="Button" parent="ButtonManager/OpenButtonPuzzles/OpenLightButton"]
 offset_left = 67.0
 offset_top = 300.0
 offset_right = 467.0
@@ -42,13 +55,14 @@ offset_bottom = 467.0
 text = "Button
 "
 
-[node name="PuzzlesCloseInstances" type="Node2D" parent="." node_paths=PackedStringArray("mathPuzzleNode", "node2d2")]
+[node name="PuzzlesCloseInstances" type="Node2D" parent="." node_paths=PackedStringArray("mathPuzzleNode", "lightPuzzlNode")]
 script = ExtResource("3_q8bhb")
 mathPuzzleNode = NodePath("PuzzleMathPrefab")
-node2d2 = NodePath("CloseButtonPrefab")
+lightPuzzlNode = NodePath("PuzzleLightPrefab")
 
 [node name="PuzzleMathPrefab" type="Node2D" parent="PuzzlesCloseInstances" node_paths=PackedStringArray("puzzlePrefab")]
-script = ExtResource("2_3h0xo")
+visible = false
+script = ExtResource("5_kvdyx")
 puzzlePrefab = NodePath(".")
 
 [node name="BackButton" type="Button" parent="PuzzlesCloseInstances/PuzzleMathPrefab"]
@@ -158,13 +172,108 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "5 - ? * 2 = 5"
 
-[node name="CloseButtonPrefab" parent="PuzzlesCloseInstances" instance=ExtResource("2_1jbwp")]
-visible = false
+[node name="PuzzleLightPrefab" type="Node2D" parent="PuzzlesCloseInstances" node_paths=PackedStringArray("puzzlePrefab")]
+script = ExtResource("5_kvdyx")
+puzzlePrefab = NodePath(".")
 
-[connection signal="pressed" from="ButtonManager/Button/Button" to="ButtonManager/Button" method="_on_button_pressed"]
-[connection signal="pressed" from="ButtonManager/Button/Button3" to="ButtonManager/Button" method="_on_button_3_pressed"]
+[node name="BackButton" type="Button" parent="PuzzlesCloseInstances/PuzzleLightPrefab"]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 1256.0
+offset_bottom = 664.0
+
+[node name="PuzzleLightScript" type="Node2D" parent="PuzzlesCloseInstances/PuzzleLightPrefab" node_paths=PackedStringArray("switchLight", "buttonsWorkWithLight")]
+script = ExtResource("8_wd58b")
+switchLight = [NodePath("Light/Light1"), NodePath("Light/Light2"), NodePath("Light/Light3"), NodePath("Light/Light4"), NodePath("Light/Light5")]
+buttonsWorkWithLight = [NodePath("LightButton1"), NodePath("LightButton2"), NodePath("LightButton3"), NodePath("LightButton4"), NodePath("LightButton5")]
+
+[node name="Sprite2D" type="Sprite2D" parent="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript"]
+position = Vector2(585, 326)
+scale = Vector2(4.9209, 4.3208)
+texture = ExtResource("2_ej384")
+
+[node name="Light" type="Node2D" parent="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript"]
+
+[node name="Light1" type="Sprite2D" parent="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript/Light"]
+position = Vector2(355, 185)
+scale = Vector2(0.743683, 0.77402)
+texture = ExtResource("2_ej384")
+
+[node name="Light2" type="Sprite2D" parent="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript/Light"]
+modulate = Color(0.901961, 1, 0, 1)
+position = Vector2(456, 186)
+scale = Vector2(0.770805, 0.760847)
+texture = ExtResource("2_ej384")
+
+[node name="Light3" type="Sprite2D" parent="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript/Light"]
+modulate = Color(0.9, 1, 0, 1)
+position = Vector2(555, 190)
+scale = Vector2(0.661619, 0.719456)
+texture = ExtResource("2_ej384")
+
+[node name="Light4" type="Sprite2D" parent="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript/Light"]
+modulate = Color(0.9, 1, 0, 1)
+position = Vector2(647, 192)
+scale = Vector2(0.633515, 0.656289)
+texture = ExtResource("2_ej384")
+
+[node name="Light5" type="Sprite2D" parent="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript/Light"]
+modulate = Color(0.9, 1, 0, 1)
+position = Vector2(765, 191)
+scale = Vector2(0.586798, 0.621985)
+texture = ExtResource("2_ej384")
+
+[node name="LightButton1" type="Node2D" parent="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript"]
+
+[node name="LightButton1" type="Button" parent="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript/LightButton1"]
+offset_left = 320.0
+offset_top = 505.0
+offset_right = 384.0
+offset_bottom = 565.0
+
+[node name="LightButton2" type="Node2D" parent="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript"]
+
+[node name="LightButton2" type="Button" parent="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript/LightButton2"]
+offset_left = 426.0
+offset_top = 508.0
+offset_right = 490.0
+offset_bottom = 568.0
+
+[node name="LightButton3" type="Node2D" parent="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript"]
+
+[node name="LightButton3" type="Button" parent="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript/LightButton3"]
+offset_left = 545.0
+offset_top = 511.0
+offset_right = 609.0
+offset_bottom = 571.0
+
+[node name="LightButton4" type="Node2D" parent="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript"]
+
+[node name="LightButton4" type="Button" parent="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript/LightButton4"]
+offset_left = 664.0
+offset_top = 507.0
+offset_right = 728.0
+offset_bottom = 567.0
+
+[node name="LightButton5" type="Node2D" parent="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript"]
+
+[node name="LightButton5" type="Button" parent="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript/LightButton5"]
+offset_left = 769.0
+offset_top = 509.0
+offset_right = 833.0
+offset_bottom = 569.0
+
+[connection signal="timeout" from="Scripts/GameManager/Timer" to="Scripts/GameManager" method="_on_timer_timeout"]
+[connection signal="pressed" from="ButtonManager/OpenButtonPuzzles/OpenMathButton/OpenMathButton" to="ButtonManager/OpenButtonPuzzles" method="_on_open_math_button_pressed"]
+[connection signal="pressed" from="ButtonManager/OpenButtonPuzzles/OpenLightButton/OpenLightButton" to="ButtonManager/OpenButtonPuzzles" method="_on_open_light_button_pressed"]
 [connection signal="pressed" from="PuzzlesCloseInstances/PuzzleMathPrefab/BackButton" to="PuzzlesCloseInstances/PuzzleMathPrefab" method="_on_back_button_pressed"]
 [connection signal="pressed" from="PuzzlesCloseInstances/PuzzleMathPrefab/PuzzleMathScript/ButtonMath2" to="PuzzlesCloseInstances/PuzzleMathPrefab/PuzzleMathScript" method="_on_button_math_2_pressed"]
 [connection signal="pressed" from="PuzzlesCloseInstances/PuzzleMathPrefab/PuzzleMathScript/ButtonMath4" to="PuzzlesCloseInstances/PuzzleMathPrefab/PuzzleMathScript" method="_on_button_math_4_pressed"]
 [connection signal="pressed" from="PuzzlesCloseInstances/PuzzleMathPrefab/PuzzleMathScript/ButtonMath1" to="PuzzlesCloseInstances/PuzzleMathPrefab/PuzzleMathScript" method="_on_button_math_1_pressed"]
 [connection signal="pressed" from="PuzzlesCloseInstances/PuzzleMathPrefab/PuzzleMathScript/ButtonMath3" to="PuzzlesCloseInstances/PuzzleMathPrefab/PuzzleMathScript" method="_on_button_math_3_pressed"]
+[connection signal="pressed" from="PuzzlesCloseInstances/PuzzleLightPrefab/BackButton" to="PuzzlesCloseInstances/PuzzleLightPrefab" method="_on_back_button_pressed"]
+[connection signal="pressed" from="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript/LightButton1/LightButton1" to="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript" method="_on_light_button_1_pressed"]
+[connection signal="pressed" from="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript/LightButton2/LightButton2" to="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript" method="_on_light_button_2_pressed"]
+[connection signal="pressed" from="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript/LightButton3/LightButton3" to="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript" method="_on_light_button_3_pressed"]
+[connection signal="pressed" from="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript/LightButton4/LightButton4" to="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript" method="_on_light_button_4_pressed"]
+[connection signal="pressed" from="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript/LightButton5/LightButton5" to="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript" method="_on_light_button_5_pressed"]

@@ -12,21 +12,20 @@ public partial class Button : Node2D
     }
 	private void _on_button_pressed()
 	{
-		if(PuzzlesCloseInstances.iPuzzlesCloseInstances.mathPuzzleNode.Visible == false)
+		if(PuzzlesCloseInstances.i.mathPuzzleNode.Visible == false)
 		{
-			PuzzlesCloseInstances.iPuzzlesCloseInstances.mathPuzzleNode.Visible = true;
-			if(PuzzlesData.iPuzzleData.isMathCombinationGenerate == false)
+			PuzzlesCloseInstances.i.mathPuzzleNode.Visible = true;
+			if(PuzzlesData.i.isMathCombinationGenerate == false)
 			{
 					
 				
 				MathPuzzle.iMathPuzzle.CreatePuzzleCombination();
-
 			}
 
 		}
 		else
 		{
-			PuzzlesCloseInstances.iPuzzlesCloseInstances.mathPuzzleNode.Visible = false;
+			PuzzlesCloseInstances.i.mathPuzzleNode.Visible = false;
 
 		}
 	}

@@ -1,10 +1,8 @@
 using Godot;
 using System;
 
-public partial class PuzzlePrefab : Node2D
+public partial class BackButtonClick : Node2D
 {
-	// Called when the node enters the scene tree for the first time.
-
 	[Export]
 	public Node2D puzzlePrefab;
 	public override void _Ready()
@@ -17,8 +15,4 @@ public partial class PuzzlePrefab : Node2D
 	{
 		puzzlePrefab.Visible = false;
 	}
-	
-
 }
-
-

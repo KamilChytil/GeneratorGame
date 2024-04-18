@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://dr1gkmkhl0x18"]
 
+[ext_resource type="Script" path="res://Scripts/BackButtonClick.cs" id="1_g27d7"]
 [ext_resource type="Texture2D" uid="uid://et4o5hy5xibo" path="res://icon.svg" id="1_j8uw5"]
-[ext_resource type="Script" path="res://Scripts/PuzzlePrefab.cs" id="1_wm5rw"]
 
 [node name="PuzzlePrefab" type="Node2D" node_paths=PackedStringArray("puzzlePrefab")]
-script = ExtResource("1_wm5rw")
+script = ExtResource("1_g27d7")
 puzzlePrefab = NodePath(".")
 
 [node name="BackButton" type="Button" parent="."]

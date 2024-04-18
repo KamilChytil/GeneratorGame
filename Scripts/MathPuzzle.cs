@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class MathPuzzle :  Puzzle
 {
@@ -7,41 +8,47 @@ public partial class MathPuzzle :  Puzzle
 
 	public static MathPuzzle iMathPuzzle;
 
-    private Random random = new Random();
+	private Random random = new Random();
 
 	[Export]
 	public Label textMathPuzzle;
 
-    public override void _Ready()
-    {
-		iMathPuzzle = this;
-    }
 
 
-    public override void CreatePuzzleCombination()
+
+	public override void _Ready()
 	{
-		GenerateNumber(ref PuzzlesData.iPuzzleData.mathNumber1);
-		GenerateNumber(ref PuzzlesData.iPuzzleData.mathNumber2);
-		GenerateNumber(ref PuzzlesData.iPuzzleData.mathNumber3);
+		iMathPuzzle = this;
+	}
+
+
+	public override void CreatePuzzleCombination()
+	{
+		GenerateNumber(ref PuzzlesData.i.mathNumber1);
+		GenerateNumber(ref PuzzlesData.i.mathNumber2);
+		GenerateNumber(ref PuzzlesData.i.mathNumber3);
 
 		do
 		{
-			GenerateNumber(ref PuzzlesData.iPuzzleData.mathNumber1);
-			GenerateNumber(ref PuzzlesData.iPuzzleData.mathNumber2);
-			GenerateNumber(ref PuzzlesData.iPuzzleData.mathNumber3);
+			GenerateNumber(ref PuzzlesData.i.mathNumber1);
+			GenerateNumber(ref PuzzlesData.i.mathNumber2);
+			GenerateNumber(ref PuzzlesData.i.mathNumber3);
 
-			float tempResult = (float)(PuzzlesData.iPuzzleData.mathNumber1 - PuzzlesData.iPuzzleData.mathNumber3) / PuzzlesData.iPuzzleData.mathNumber2;
-            PuzzlesData.iPuzzleData.mathNumberPlayerFound = tempResult;
-			GD.Print("num1:" + PuzzlesData.iPuzzleData.mathNumber1);
-			GD.Print("num2:" + PuzzlesData.iPuzzleData.mathNumber2);
-			GD.Print("num4:" + PuzzlesData.iPuzzleData.mathNumber3);
-			GD.Print("PuzzlesData.iPuzzleData.mathNumberPlayerFound:" + PuzzlesData.iPuzzleData.mathNumberPlayerFound);
-		} while (PuzzlesData.iPuzzleData.mathNumber1 <= PuzzlesData.iPuzzleData.mathNumber3 || PuzzlesData.iPuzzleData.mathNumber2 > 5 || (PuzzlesData.iPuzzleData.mathNumber1 - PuzzlesData.iPuzzleData.mathNumber3) <= PuzzlesData.iPuzzleData.mathNumber2 || PuzzlesData.iPuzzleData.mathNumberPlayerFound % 1 != 0);
+			float tempResult = (float)(PuzzlesData.i.mathNumber1 - PuzzlesData.i.mathNumber3) / PuzzlesData.i.mathNumber2;
+			PuzzlesData.i.mathNumberPlayerFound = tempResult;
+			GD.Print("num1:" + PuzzlesData.i.mathNumber1);
+			GD.Print("num2:" + PuzzlesData.i.mathNumber2);
+			GD.Print("num4:" + PuzzlesData.i.mathNumber3);
+			GD.Print("PuzzlesData.i.mathNumberPlayerFound:" + PuzzlesData.i.mathNumberPlayerFound);
 
-		textMathPuzzle.Text = PuzzlesData.iPuzzleData.mathNumber1.ToString() + " - ? * " + PuzzlesData.iPuzzleData.mathNumber2.ToString() + " = " + PuzzlesData.iPuzzleData.mathNumber3.ToString();
-		PuzzlesData.iPuzzleData.isMathCombinationGenerate = true;
+		} while (PuzzlesData.i.mathNumber1 <= PuzzlesData.i.mathNumber3 || PuzzlesData.i.mathNumber2 > 5 || (PuzzlesData.i.mathNumber1 - PuzzlesData.i.mathNumber3) <= PuzzlesData.i.mathNumber2 || PuzzlesData.i.mathNumberPlayerFound % 1 != 0 || PuzzlesData.i.mathNumberPlayerFound > 4);
+				
+		textMathPuzzle.Text = PuzzlesData.i.mathNumber1.ToString() + " - ? * " + PuzzlesData.i.mathNumber2.ToString() + " = " + PuzzlesData.i.mathNumber3.ToString();
+		PuzzlesData.i.isMathCombinationGenerate = true;
 
 	}
+
+
 
 	private void GenerateNumber(ref int number)
 	{
@@ -53,42 +60,44 @@ public partial class MathPuzzle :  Puzzle
 
 	private void _on_button_math_2_pressed()
 	{
-		CheckMathCombination(2);
+		SolvePuzzleCombination(2);
 	}
 
 
 	private void _on_button_math_4_pressed()
 	{
-		CheckMathCombination(4);
+		SolvePuzzleCombination(4);
 	}
 
 
 	private void _on_button_math_1_pressed()
 	{
-		CheckMathCombination(1);
+		SolvePuzzleCombination(1);
 	}
 
 
 	private void _on_button_math_3_pressed()
 	{
-		CheckMathCombination(3);
+		SolvePuzzleCombination(3);
 	}
 
 
-	private void CheckMathCombination(int playerPickNumber)
-	{
-		if (PuzzlesData.iPuzzleData.mathNumberPlayerFound == playerPickNumber)
-		{
-			PuzzlesData.iPuzzleData.isMathCombinationGenerate = false;
-			PuzzlesCloseInstances.iPuzzlesCloseInstances.mathPuzzleNode.Visible = false;
 
+	public override void SolvePuzzleCombination(int playerPickNumber)
+	{
+		if (PuzzlesData.i.mathNumberPlayerFound == playerPickNumber)
+		{
+			PuzzlesData.i.isMathCombinationGenerate = false;
+			PuzzlesCloseInstances.i.mathPuzzleNode.Visible = false;
+			PuzzlesData.i.isMathPuzzleSolved = true;
+			PuzzlesData.i.buttonsOpenPuzzle[0].Visible = false;
 		}
 		else
 		{
-			PuzzlesData.iPuzzleData.isMathCombinationGenerate = true;
+			PuzzlesData.i.isMathCombinationGenerate = true;
 
 
-            PuzzlesCloseInstances.iPuzzlesCloseInstances.mathPuzzleNode.Visible = false;
+			PuzzlesCloseInstances.i.mathPuzzleNode.Visible = false;
 
 		}
 

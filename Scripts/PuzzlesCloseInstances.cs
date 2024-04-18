@@ -4,24 +4,26 @@ using System;
 public partial class PuzzlesCloseInstances : Node2D
 {
 
-    public static PuzzlesCloseInstances iPuzzlesCloseInstances;
+    public static PuzzlesCloseInstances i;
+
+
 
     [Export]
     public Node2D mathPuzzleNode;
     [Export]
-    public Node2D node2d2;
+    public Node2D lightPuzzlNode;
+
 
     public override void _Ready()
 	{
-        iPuzzlesCloseInstances = this;
+        i = this;
         SetVisibleOff();
     }
 
     public void SetVisibleOff()
     {
         mathPuzzleNode.Visible = false;
-        node2d2.Visible = false;
-
+        lightPuzzlNode.Visible = false;
     }
 
 
