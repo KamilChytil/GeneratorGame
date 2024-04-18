@@ -36,9 +36,6 @@ public partial class MathPuzzle :  Puzzle
 
 			float tempResult = (float)(PuzzlesData.i.mathNumber1 - PuzzlesData.i.mathNumber3) / PuzzlesData.i.mathNumber2;
 			PuzzlesData.i.mathNumberPlayerFound = tempResult;
-			GD.Print("num1:" + PuzzlesData.i.mathNumber1);
-			GD.Print("num2:" + PuzzlesData.i.mathNumber2);
-			GD.Print("num4:" + PuzzlesData.i.mathNumber3);
 			GD.Print("PuzzlesData.i.mathNumberPlayerFound:" + PuzzlesData.i.mathNumberPlayerFound);
 
 		} while (PuzzlesData.i.mathNumber1 <= PuzzlesData.i.mathNumber3 || PuzzlesData.i.mathNumber2 > 5 || (PuzzlesData.i.mathNumber1 - PuzzlesData.i.mathNumber3) <= PuzzlesData.i.mathNumber2 || PuzzlesData.i.mathNumberPlayerFound % 1 != 0 || PuzzlesData.i.mathNumberPlayerFound > 4);
