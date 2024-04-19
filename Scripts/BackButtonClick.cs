@@ -14,5 +14,6 @@ public partial class BackButtonClick : Node2D
 	private void _on_back_button_pressed()
 	{
 		puzzlePrefab.Visible = false;
+		PuzzlesData.i.buttonsOpenPuzzle[0].Visible = false;
 	}
 }

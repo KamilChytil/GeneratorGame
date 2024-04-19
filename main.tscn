@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/PuzzlesData.cs" id="1_n5gj1"]
 [ext_resource type="Texture2D" uid="uid://et4o5hy5xibo" path="res://icon.svg" id="2_ej384"]
-[ext_resource type="Script" path="res://GameManager.cs" id="2_vhtfj"]
+[ext_resource type="Script" path="res://Scripts/GameManager.cs" id="2_vhtfj"]
 [ext_resource type="Script" path="res://Scripts/OpenPuzzles.cs" id="3_a40v4"]
 [ext_resource type="Script" path="res://Scripts/MathPuzzle.cs" id="3_oa3bw"]
 [ext_resource type="Script" path="res://Scripts/PuzzlesCloseInstances.cs" id="3_q8bhb"]
@@ -36,6 +36,7 @@ position = Vector2(0, -2)
 script = ExtResource("3_a40v4")
 
 [node name="OpenMathButton" type="Node2D" parent="ButtonManager/OpenButtonPuzzles"]
+visible = false
 
 [node name="OpenMathButton" type="Button" parent="ButtonManager/OpenButtonPuzzles/OpenMathButton"]
 offset_left = 59.0
@@ -46,6 +47,7 @@ text = "Button
 "
 
 [node name="OpenLightButton" type="Node2D" parent="ButtonManager/OpenButtonPuzzles"]
+visible = false
 
 [node name="OpenLightButton" type="Button" parent="ButtonManager/OpenButtonPuzzles/OpenLightButton"]
 offset_left = 67.0

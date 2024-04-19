@@ -10,9 +10,9 @@ public partial class GameManager : Node2D
 	[Export]
 	public Timer timer;
 
-	private int remainingTime = 300;
+	private float remainingTime = 300;
 
-	private int timerWhenPuzzleHappend = 5;
+	private float timerWhenPuzzleHappend = 5;
 
 	private Random random = new Random();
 
@@ -34,38 +34,50 @@ public partial class GameManager : Node2D
 
 	public void _on_timer_timeout()
 	{
+
 		if (remainingTime > 0)
 		{
 			remainingTime -= 1;
 			timerWhenPuzzleHappend -= 1;
-			
+
 			if (timerWhenPuzzleHappend <= 0)
 			{
+				timerWhenPuzzleHappend = 5;
+
 				int choosePuzzle;
 				int allPuzzleOn = 0;
+
 				do
 				{
-					choosePuzzle = random.Next(0, arrayPuzzlesSolved.Count);
-					GD.Print(choosePuzzle + "choosePuzzle");
-					for(int i = 0;i<arrayPuzzlesSolved.Count;i++)
-					{
+					
 
-						if (PuzzlesData.i.buttonsOpenPuzzle[i].Visible ==true)
+					choosePuzzle = random.Next(0, arrayPuzzlesSolved.Count);
+
+					if (!PuzzlesData.i.buttonsOpenPuzzle[choosePuzzle].Visible)
+					{
+						PuzzlesData.i.buttonsOpenPuzzle[choosePuzzle].Visible = true;
+						//CreateCombination(choosePuzzle);
+
+						GD.Print(choosePuzzle + "choosePuzzle");
+					}
+
+					for (int i = 0; i < arrayPuzzlesSolved.Count; i++)
+					{
+						if (PuzzlesData.i.buttonsOpenPuzzle[i].Visible)
 						{
 							allPuzzleOn++;
-
+							GD.Print(allPuzzleOn + "allPuzzleOn");
 						}
 					}
+
 					if (allPuzzleOn == arrayPuzzlesSolved.Count)
 					{
 						GD.Print("Break");
 						break;
-
 					}
-				} while (PuzzlesData.i.buttonsOpenPuzzle[choosePuzzle].Visible == true);
-				PuzzlesData.i.buttonsOpenPuzzle[choosePuzzle].Visible = true;
+				} while (PuzzlesData.i.buttonsOpenPuzzle[choosePuzzle].Visible == false);
 
-				timerWhenPuzzleHappend = 5;
+
 
 			}
 
@@ -89,6 +101,18 @@ public partial class GameManager : Node2D
 		GD.Print("No TIme!");
 	}
 
+
+	private void CreateCombination(int index)
+	{
+		switch(index)
+		{
+			case 0:
+				MathPuzzle.iMathPuzzle.CreatePuzzleCombination();
+				break;
+			case 1:
+				break;
+		}
+	}
 
 }
 

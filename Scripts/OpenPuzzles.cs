@@ -13,12 +13,7 @@ public partial class OpenPuzzles : Node2D
 		if (PuzzlesCloseInstances.i.mathPuzzleNode.Visible == false)
 		{
 
-			if (PuzzlesData.i.isMathCombinationGenerate == false)
-			{
-
 				PuzzlesCloseInstances.i.mathPuzzleNode.Visible = true;
-				MathPuzzle.iMathPuzzle.CreatePuzzleCombination();
-			}
 
 		}
 		else
