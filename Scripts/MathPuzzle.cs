@@ -15,10 +15,10 @@ public partial class MathPuzzle :  Puzzle
 
 
 
-
 	public override void _Ready()
 	{
 		iMathPuzzle = this;
+		
 	}
 
 
@@ -34,16 +34,16 @@ public partial class MathPuzzle :  Puzzle
 			GenerateNumber(ref PuzzlesData.i.mathNumber2);
 			GenerateNumber(ref PuzzlesData.i.mathNumber3);
 
+			GD.Print("PuzzlesData.i.mathNumberPlayerFound:" + PuzzlesData.i.mathNumberPlayerFound);
 			float tempResult = (float)(PuzzlesData.i.mathNumber1 - PuzzlesData.i.mathNumber3) / PuzzlesData.i.mathNumber2;
 			PuzzlesData.i.mathNumberPlayerFound = tempResult;
-			//GD.Print("PuzzlesData.i.mathNumberPlayerFound:" + PuzzlesData.i.mathNumberPlayerFound);
 
 		} while (PuzzlesData.i.mathNumber1 <= PuzzlesData.i.mathNumber3 || PuzzlesData.i.mathNumber2 > 5 || (PuzzlesData.i.mathNumber1 - PuzzlesData.i.mathNumber3) <= PuzzlesData.i.mathNumber2 || PuzzlesData.i.mathNumberPlayerFound % 1 != 0 || PuzzlesData.i.mathNumberPlayerFound > 4);
 				
 		textMathPuzzle.Text = PuzzlesData.i.mathNumber1.ToString() + " - ? * " + PuzzlesData.i.mathNumber2.ToString() + " = " + PuzzlesData.i.mathNumber3.ToString();
-		PuzzlesData.i.isMathCombinationGenerate = true;
 
-	}
+
+    }
 
 
 
@@ -85,25 +85,24 @@ public partial class MathPuzzle :  Puzzle
 		if (PuzzlesData.i.mathNumberPlayerFound == playerPickNumber)
 		{
 			PuzzlesData.i.isMathCombinationGenerate = false;
-			PuzzlesCloseInstances.i.mathPuzzleNode.Visible = false;
-			PuzzlesData.i.isMathPuzzleSolved = true;
+			PuzzlesShowInstances.i.mathPuzzleNode.Visible = false;
 			PuzzlesData.i.buttonsOpenPuzzle[0].Visible = false;
-			
-		}
+			PuzzlesData.i.damageGeneratorPerSec -= 3;
+            
+        }
 		else
 		{
 			PuzzlesData.i.isMathCombinationGenerate = true;
-
-
-			PuzzlesCloseInstances.i.mathPuzzleNode.Visible = false;
+            PuzzlesShowInstances.i.mathPuzzleNode.Visible = false;
+            
+			PuzzlesData.i.disableButtons[0].Visible = true;
 
 		}
 
 	}
 
 
+
+
 }
-
-
-
 

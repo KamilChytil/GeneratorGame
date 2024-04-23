@@ -4,21 +4,20 @@ using System;
 public partial class OpenPuzzles : Node2D
 {
 
-    public override void _Ready()
-    {
-
-    }
-    private void _on_open_math_button_pressed()
+	public override void _Ready()
 	{
-		if (PuzzlesCloseInstances.i.mathPuzzleNode.Visible == false)
+
+	}
+	private void _on_open_math_button_pressed()
+	{
+		if (PuzzlesShowInstances.i.mathPuzzleNode.Visible == false)
 		{
 
-				PuzzlesCloseInstances.i.mathPuzzleNode.Visible = true;
-
+			PuzzlesShowInstances.i.mathPuzzleNode.Visible = true;
 		}
 		else
 		{
-			PuzzlesCloseInstances.i.mathPuzzleNode.Visible = false;
+			PuzzlesShowInstances.i.mathPuzzleNode.Visible = false;
 
 		}
 	}
@@ -33,20 +32,17 @@ public partial class OpenPuzzles : Node2D
 	private void _on_open_light_button_pressed()
 	{
 
-		if (PuzzlesCloseInstances.i.lightPuzzlNode.Visible == false)
+		if (PuzzlesShowInstances.i.lightPuzzlNode.Visible == false)
 		{
 			
-			if (PuzzlesData.i.isLightPuzzleSolved == false)
-			{
-				PuzzlesCloseInstances.i.lightPuzzlNode.Visible = true;
+			PuzzlesShowInstances.i.lightPuzzlNode.Visible = true;
 
 
-			}
 
 		}
 		else
 		{
-			PuzzlesCloseInstances.i.lightPuzzlNode.Visible = false;
+			PuzzlesShowInstances.i.lightPuzzlNode.Visible = false;
 
 		}
 

@@ -1,33 +1,340 @@
-[gd_scene load_steps=10 format=3 uid="uid://cnar00m6ljcit"]
+[gd_scene load_steps=25 format=3 uid="uid://cnar00m6ljcit"]
 
 [ext_resource type="Script" path="res://Scripts/PuzzlesData.cs" id="1_n5gj1"]
 [ext_resource type="Texture2D" uid="uid://et4o5hy5xibo" path="res://icon.svg" id="2_ej384"]
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="2_vhtfj"]
+[ext_resource type="Texture2D" uid="uid://dd1so4ik4qjbe" path="res://Texture/Game_map_lit_fixed.png" id="3_4281x"]
 [ext_resource type="Script" path="res://Scripts/OpenPuzzles.cs" id="3_a40v4"]
 [ext_resource type="Script" path="res://Scripts/MathPuzzle.cs" id="3_oa3bw"]
-[ext_resource type="Script" path="res://Scripts/PuzzlesCloseInstances.cs" id="3_q8bhb"]
+[ext_resource type="Texture2D" uid="uid://dhptk6er1lrfc" path="res://Texture/DisplayGray.png" id="4_46afm"]
+[ext_resource type="Texture2D" uid="uid://uv5g2fd7pym0" path="res://Texture/Display_green.png" id="5_1tuxf"]
 [ext_resource type="Script" path="res://Scripts/BackButtonClick.cs" id="5_kvdyx"]
-[ext_resource type="Texture2D" uid="uid://bjtqy3m0rs268" path="res://Game_map.png" id="6_k8r3n"]
-[ext_resource type="Script" path="res://LightPuzzle.cs" id="8_wd58b"]
+[ext_resource type="Script" path="res://Scripts/DisableButton.cs" id="5_x82o3"]
+[ext_resource type="Texture2D" uid="uid://b3h6pkw113pgt" path="res://Texture/light.png" id="6_f1wty"]
+[ext_resource type="Script" path="res://Scripts/LightOffOn.cs" id="6_twc5q"]
+[ext_resource type="Script" path="res://Scripts/PuzzlesShowInstances.cs" id="6_vk7do"]
+[ext_resource type="Script" path="res://Scripts/FiveLightAnimation.cs" id="7_37vhf"]
+[ext_resource type="Texture2D" uid="uid://2wws0n2ht4x" path="res://Texture/light_yellow.png" id="7_t6d6u"]
+[ext_resource type="Script" path="res://Scripts/LightPuzzle.cs" id="8_wd58b"]
+[ext_resource type="Texture2D" uid="uid://bwhgqh6eouimu" path="res://Texture/CloseBackGroundpng.png" id="16_ydd5s"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2co6e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_f1wty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f1wty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f1wty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f1wty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f1wty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_t6d6u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_t6d6u")
+}],
+"loop": true,
+"name": &"TEST",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5m6et"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_f1wty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f1wty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f1wty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f1wty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_t6d6u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_t6d6u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f1wty")
+}],
+"loop": true,
+"name": &"SecondLight",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f05a0"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_f1wty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f1wty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f1wty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f1wty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f1wty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f1wty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f1wty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_t6d6u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f1wty")
+}],
+"loop": true,
+"name": &"defaultLight3",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_scu5g"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_f1wty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f1wty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f1wty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_t6d6u")
+}],
+"loop": true,
+"name": &"Light4",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rrehp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_f1wty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f1wty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f1wty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f1wty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f1wty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f1wty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f1wty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_t6d6u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f1wty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_t6d6u")
+}],
+"loop": true,
+"name": &"Light5",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cssgn"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l3cd2"]
+bg_color = Color(0.94902, 0, 0, 1)
 
 [node name="Main" type="Node2D"]
 
 [node name="Scripts" type="Node2D" parent="."]
 
-[node name="PuzzlesData" type="Node2D" parent="Scripts" node_paths=PackedStringArray("buttonsOpenPuzzle")]
+[node name="PuzzlesData" type="Node2D" parent="Scripts" node_paths=PackedStringArray("buttonsOpenPuzzle", "disableButtons")]
 script = ExtResource("1_n5gj1")
 buttonsOpenPuzzle = [NodePath("../../ButtonManager/OpenButtonPuzzles/OpenMathButton"), NodePath("../../ButtonManager/OpenButtonPuzzles/OpenLightButton")]
+disableButtons = [NodePath("../../DisableButtons/DisableMathButtonMain"), NodePath("../../DisableButtons/DisableLightButtonMain")]
 
-[node name="GameManager" type="Node2D" parent="Scripts" node_paths=PackedStringArray("timer")]
+[node name="GameManager" type="Node2D" parent="Scripts" node_paths=PackedStringArray("timer", "damegeProgressBar", "remainingTimeLabel")]
 script = ExtResource("2_vhtfj")
 timer = NodePath("Timer")
+damegeProgressBar = NodePath("../../DamageBar/ProgressBar")
+remainingTimeLabel = NodePath("../../RemainingTime/RemainingTimeLabel")
 
 [node name="Timer" type="Timer" parent="Scripts/GameManager"]
 process_callback = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(553, 322)
-texture = ExtResource("6_k8r3n")
+[node name="Grafika" type="Node2D" parent="."]
+
+[node name="BackGround" type="Sprite2D" parent="Grafika"]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(589, 329)
+texture = ExtResource("3_4281x")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Grafika"]
+position = Vector2(85.9999, 259)
+scale = Vector2(0.100056, 0.179214)
+texture = ExtResource("4_46afm")
+
+[node name="LightPanel" type="Sprite2D" parent="Grafika"]
+position = Vector2(580, 283)
+scale = Vector2(-0.152493, 0.278139)
+texture = ExtResource("5_1tuxf")
+
+[node name="Label" type="Label" parent="Grafika/LightPanel"]
+offset_left = 485.0
+offset_top = -323.0
+offset_right = 3506.0
+offset_bottom = 2695.0
+scale = Vector2(-0.403625, 0.334472)
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "asdaskdjaslkdjas
+dasaasdw
+sdůkjaslůdjaslkůdaslůdkasůaswaddal d
+asda
+sdůlaskdůalskdlůkwpaokfpůdoskfpůadlof
+dfsdfl§ůsdflsdf§sdf¨§sldf§s
+sdasadasdasdúpeorúrptlog
+dasdasdasdsdasdůlkasdůlkasdůasd
+asldkasdůlaskdůlaskdasůd
+asdlkasůldkasůdlak
+sdaskdůasldkasůldkasdů
+asdůsaldksaůdlkasůd
+asdklsakdlskdpúofksg"
+
+[node name="Simon_S" type="Sprite2D" parent="Grafika"]
+position = Vector2(366.539, 242.681)
+scale = Vector2(0.159232, 0.174201)
+texture = ExtResource("5_1tuxf")
+
+[node name="SimonS" type="Sprite2D" parent="Grafika"]
+position = Vector2(366.539, 377.681)
+scale = Vector2(0.159, 0.174)
+texture = ExtResource("5_1tuxf")
+
+[node name="Light" type="Node2D" parent="Grafika"]
+position = Vector2(-43, 213)
+script = ExtResource("6_twc5q")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Grafika/Light"]
+position = Vector2(543, 212.2)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_f1wty")
+
+[node name="Sprite2D" type="Sprite2D" parent="Grafika/Light"]
+position = Vector2(582.8, 212.2)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_f1wty")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Grafika/Light"]
+position = Vector2(622.8, 212.2)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_f1wty")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Grafika/Light"]
+position = Vector2(662.8, 212.2)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_f1wty")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Grafika/Light"]
+position = Vector2(702.8, 212.2)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_f1wty")
+
+[node name="Animation" type="Node2D" parent="Grafika"]
+script = ExtResource("7_37vhf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Grafika/Animation"]
+position = Vector2(921, 127)
+scale = Vector2(0.3, 0.113)
+sprite_frames = SubResource("SpriteFrames_2co6e")
+animation = &"TEST"
+autoplay = "TEST"
+frame = 4
+frame_progress = 0.0398718
+speed_scale = 0.1
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Grafika/Animation"]
+position = Vector2(670, 126)
+scale = Vector2(0.3, 0.113)
+sprite_frames = SubResource("SpriteFrames_5m6et")
+animation = &"SecondLight"
+autoplay = "SecondLight"
+frame = 6
+frame_progress = 0.071022
+speed_scale = 0.1
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Grafika/Animation"]
+position = Vector2(402, 126)
+scale = Vector2(0.3, 0.109)
+sprite_frames = SubResource("SpriteFrames_f05a0")
+animation = &"defaultLight3"
+autoplay = "defaultLight3"
+frame = 5
+frame_progress = 0.118394
+speed_scale = 0.1
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Grafika/Animation"]
+position = Vector2(970, 474)
+scale = Vector2(0.3, 0.293)
+sprite_frames = SubResource("SpriteFrames_scu5g")
+animation = &"Light4"
+autoplay = "Light4"
+frame = 2
+frame_progress = 0.0441073
+speed_scale = 0.1
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Grafika/Animation"]
+position = Vector2(276, 476)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_rrehp")
+animation = &"Light5"
+autoplay = "Light5"
+speed_scale = 0.1
+
+[node name="DamageBar" type="Node2D" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="DamageBar"]
+custom_minimum_size = Vector2(650, 40)
+offset_left = 297.0
+offset_top = 455.0
+offset_right = 947.0
+offset_bottom = 495.0
+theme_override_styles/background = SubResource("StyleBoxFlat_cssgn")
+theme_override_styles/fill = SubResource("StyleBoxFlat_l3cd2")
 
 [node name="ButtonManager" type="Node2D" parent="."]
 
@@ -47,42 +354,45 @@ text = "Button
 "
 
 [node name="OpenLightButton" type="Node2D" parent="ButtonManager/OpenButtonPuzzles"]
-visible = false
+position = Vector2(300, -14)
 
 [node name="OpenLightButton" type="Button" parent="ButtonManager/OpenButtonPuzzles/OpenLightButton"]
-offset_left = 67.0
-offset_top = 300.0
-offset_right = 467.0
-offset_bottom = 467.0
-text = "Button
+modulate = Color(1, 1, 1, 0)
+offset_left = 174.0
+offset_top = 245.0
+offset_right = 574.0
+offset_bottom = 412.0
+scale = Vector2(0.533309, 1.31827)
+text = "
+
 "
 
-[node name="PuzzlesCloseInstances" type="Node2D" parent="." node_paths=PackedStringArray("mathPuzzleNode", "lightPuzzlNode")]
-script = ExtResource("3_q8bhb")
+[node name="PuzzlesShowInstances" type="Node2D" parent="." node_paths=PackedStringArray("mathPuzzleNode", "lightPuzzlNode")]
+script = ExtResource("6_vk7do")
 mathPuzzleNode = NodePath("PuzzleMathPrefab")
 lightPuzzlNode = NodePath("PuzzleLightPrefab")
 
-[node name="PuzzleMathPrefab" type="Node2D" parent="PuzzlesCloseInstances" node_paths=PackedStringArray("puzzlePrefab")]
+[node name="PuzzleMathPrefab" type="Node2D" parent="PuzzlesShowInstances" node_paths=PackedStringArray("puzzlePrefab")]
 visible = false
 script = ExtResource("5_kvdyx")
 puzzlePrefab = NodePath(".")
 
-[node name="BackButton" type="Button" parent="PuzzlesCloseInstances/PuzzleMathPrefab"]
+[node name="BackButton" type="Button" parent="PuzzlesShowInstances/PuzzleMathPrefab"]
 offset_left = 2.0
 offset_top = 2.0
 offset_right = 1256.0
 offset_bottom = 664.0
 
-[node name="PuzzleMathScript" type="Node2D" parent="PuzzlesCloseInstances/PuzzleMathPrefab" node_paths=PackedStringArray("textMathPuzzle")]
+[node name="PuzzleMathScript" type="Node2D" parent="PuzzlesShowInstances/PuzzleMathPrefab" node_paths=PackedStringArray("textMathPuzzle")]
 script = ExtResource("3_oa3bw")
 textMathPuzzle = NodePath("LabelText")
 
-[node name="Sprite2D" type="Sprite2D" parent="PuzzlesCloseInstances/PuzzleMathPrefab/PuzzleMathScript"]
+[node name="Sprite2D" type="Sprite2D" parent="PuzzlesShowInstances/PuzzleMathPrefab/PuzzleMathScript"]
 position = Vector2(545, 332)
 scale = Vector2(4.9209, 4.3208)
 texture = ExtResource("2_ej384")
 
-[node name="NotClicButton" type="Button" parent="PuzzlesCloseInstances/PuzzleMathPrefab/PuzzleMathScript"]
+[node name="NotClicButton" type="Button" parent="PuzzlesShowInstances/PuzzleMathPrefab/PuzzleMathScript"]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 offset_left = 230.0
@@ -90,13 +400,13 @@ offset_top = 64.0
 offset_right = 856.0
 offset_bottom = 609.0
 
-[node name="ButtonMath2" type="Button" parent="PuzzlesCloseInstances/PuzzleMathPrefab/PuzzleMathScript"]
+[node name="ButtonMath2" type="Button" parent="PuzzlesShowInstances/PuzzleMathPrefab/PuzzleMathScript"]
 offset_left = 320.0
 offset_top = 505.0
 offset_right = 384.0
 offset_bottom = 565.0
 
-[node name="Label" type="Label" parent="PuzzlesCloseInstances/PuzzleMathPrefab/PuzzleMathScript/ButtonMath2"]
+[node name="Label" type="Label" parent="PuzzlesShowInstances/PuzzleMathPrefab/PuzzleMathScript/ButtonMath2"]
 layout_mode = 0
 offset_left = 12.0
 offset_top = 1.0
@@ -109,13 +419,13 @@ theme_override_font_sizes/font_size = 40
 text = "2
 "
 
-[node name="ButtonMath4" type="Button" parent="PuzzlesCloseInstances/PuzzleMathPrefab/PuzzleMathScript"]
+[node name="ButtonMath4" type="Button" parent="PuzzlesShowInstances/PuzzleMathPrefab/PuzzleMathScript"]
 offset_left = 426.0
 offset_top = 508.0
 offset_right = 490.0
 offset_bottom = 568.0
 
-[node name="Label" type="Label" parent="PuzzlesCloseInstances/PuzzleMathPrefab/PuzzleMathScript/ButtonMath4"]
+[node name="Label" type="Label" parent="PuzzlesShowInstances/PuzzleMathPrefab/PuzzleMathScript/ButtonMath4"]
 layout_mode = 0
 offset_left = 17.0
 offset_top = -1.0
@@ -127,13 +437,13 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 40
 text = "4"
 
-[node name="ButtonMath1" type="Button" parent="PuzzlesCloseInstances/PuzzleMathPrefab/PuzzleMathScript"]
+[node name="ButtonMath1" type="Button" parent="PuzzlesShowInstances/PuzzleMathPrefab/PuzzleMathScript"]
 offset_left = 545.0
 offset_top = 511.0
 offset_right = 609.0
 offset_bottom = 571.0
 
-[node name="Label" type="Label" parent="PuzzlesCloseInstances/PuzzleMathPrefab/PuzzleMathScript/ButtonMath1"]
+[node name="Label" type="Label" parent="PuzzlesShowInstances/PuzzleMathPrefab/PuzzleMathScript/ButtonMath1"]
 layout_mode = 0
 offset_left = 12.0
 offset_top = 1.0
@@ -145,13 +455,13 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 40
 text = "1"
 
-[node name="ButtonMath3" type="Button" parent="PuzzlesCloseInstances/PuzzleMathPrefab/PuzzleMathScript"]
+[node name="ButtonMath3" type="Button" parent="PuzzlesShowInstances/PuzzleMathPrefab/PuzzleMathScript"]
 offset_left = 664.0
 offset_top = 507.0
 offset_right = 728.0
 offset_bottom = 567.0
 
-[node name="Label" type="Label" parent="PuzzlesCloseInstances/PuzzleMathPrefab/PuzzleMathScript/ButtonMath3"]
+[node name="Label" type="Label" parent="PuzzlesShowInstances/PuzzleMathPrefab/PuzzleMathScript/ButtonMath3"]
 layout_mode = 0
 offset_left = 12.0
 offset_top = 1.0
@@ -163,7 +473,7 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 40
 text = "3"
 
-[node name="LabelText" type="Label" parent="PuzzlesCloseInstances/PuzzleMathPrefab/PuzzleMathScript"]
+[node name="LabelText" type="Label" parent="PuzzlesShowInstances/PuzzleMathPrefab/PuzzleMathScript"]
 offset_left = 357.0
 offset_top = 246.0
 offset_right = 513.0
@@ -174,108 +484,203 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "5 - ? * 2 = 5"
 
-[node name="PuzzleLightPrefab" type="Node2D" parent="PuzzlesCloseInstances" node_paths=PackedStringArray("puzzlePrefab")]
+[node name="PuzzleLightPrefab" type="Node2D" parent="PuzzlesShowInstances" node_paths=PackedStringArray("puzzlePrefab")]
+visible = false
 script = ExtResource("5_kvdyx")
 puzzlePrefab = NodePath(".")
 
-[node name="BackButton" type="Button" parent="PuzzlesCloseInstances/PuzzleLightPrefab"]
+[node name="BackButton" type="Button" parent="PuzzlesShowInstances/PuzzleLightPrefab"]
 offset_left = 2.0
 offset_top = 2.0
 offset_right = 1256.0
 offset_bottom = 664.0
 
-[node name="PuzzleLightScript" type="Node2D" parent="PuzzlesCloseInstances/PuzzleLightPrefab" node_paths=PackedStringArray("switchLight", "buttonsWorkWithLight")]
+[node name="Button" type="Button" parent="PuzzlesShowInstances/PuzzleLightPrefab"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 265.0
+offset_top = 57.0
+offset_right = 916.0
+offset_bottom = 616.0
+
+[node name="PuzzleLightScript" type="Node2D" parent="PuzzlesShowInstances/PuzzleLightPrefab" node_paths=PackedStringArray("switchLight", "buttonsWorkWithLight")]
 script = ExtResource("8_wd58b")
 switchLight = [NodePath("Light/Light1"), NodePath("Light/Light2"), NodePath("Light/Light3"), NodePath("Light/Light4"), NodePath("Light/Light5")]
 buttonsWorkWithLight = [NodePath("LightButton1"), NodePath("LightButton2"), NodePath("LightButton3"), NodePath("LightButton4"), NodePath("LightButton5")]
 
-[node name="Sprite2D" type="Sprite2D" parent="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript"]
-position = Vector2(585, 326)
-scale = Vector2(4.9209, 4.3208)
-texture = ExtResource("2_ej384")
+[node name="Sprite2D2" type="Sprite2D" parent="PuzzlesShowInstances/PuzzleLightPrefab/PuzzleLightScript"]
+position = Vector2(581, 331)
+scale = Vector2(2.03411, 3.36218)
+texture = ExtResource("16_ydd5s")
 
-[node name="Light" type="Node2D" parent="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript"]
+[node name="Sprite2D" type="Sprite2D" parent="PuzzlesShowInstances/PuzzleLightPrefab/PuzzleLightScript"]
+position = Vector2(585, 32)
+scale = Vector2(0.521973, 0.604088)
+texture = ExtResource("5_1tuxf")
 
-[node name="Light1" type="Sprite2D" parent="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript/Light"]
-position = Vector2(355, 185)
-scale = Vector2(0.743683, 0.77402)
-texture = ExtResource("2_ej384")
+[node name="Light" type="Node2D" parent="PuzzlesShowInstances/PuzzleLightPrefab/PuzzleLightScript"]
 
-[node name="Light2" type="Sprite2D" parent="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript/Light"]
+[node name="Light1" type="Sprite2D" parent="PuzzlesShowInstances/PuzzleLightPrefab/PuzzleLightScript/Light"]
+position = Vector2(305, 468)
+texture = ExtResource("6_f1wty")
+
+[node name="Light2" type="Sprite2D" parent="PuzzlesShowInstances/PuzzleLightPrefab/PuzzleLightScript/Light"]
 modulate = Color(0.901961, 1, 0, 1)
-position = Vector2(456, 186)
-scale = Vector2(0.770805, 0.760847)
-texture = ExtResource("2_ej384")
+position = Vector2(440, 472)
+texture = ExtResource("6_f1wty")
 
-[node name="Light3" type="Sprite2D" parent="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript/Light"]
+[node name="Light3" type="Sprite2D" parent="PuzzlesShowInstances/PuzzleLightPrefab/PuzzleLightScript/Light"]
 modulate = Color(0.9, 1, 0, 1)
-position = Vector2(555, 190)
-scale = Vector2(0.661619, 0.719456)
-texture = ExtResource("2_ej384")
+position = Vector2(580, 472.537)
+texture = ExtResource("6_f1wty")
 
-[node name="Light4" type="Sprite2D" parent="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript/Light"]
+[node name="Light4" type="Sprite2D" parent="PuzzlesShowInstances/PuzzleLightPrefab/PuzzleLightScript/Light"]
 modulate = Color(0.9, 1, 0, 1)
-position = Vector2(647, 192)
-scale = Vector2(0.633515, 0.656289)
-texture = ExtResource("2_ej384")
+position = Vector2(720, 474.537)
+texture = ExtResource("6_f1wty")
 
-[node name="Light5" type="Sprite2D" parent="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript/Light"]
+[node name="Light5" type="Sprite2D" parent="PuzzlesShowInstances/PuzzleLightPrefab/PuzzleLightScript/Light"]
 modulate = Color(0.9, 1, 0, 1)
-position = Vector2(765, 191)
-scale = Vector2(0.586798, 0.621985)
-texture = ExtResource("2_ej384")
+position = Vector2(860, 473.537)
+texture = ExtResource("6_f1wty")
 
-[node name="LightButton1" type="Node2D" parent="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript"]
+[node name="LightButton1" type="Node2D" parent="PuzzlesShowInstances/PuzzleLightPrefab/PuzzleLightScript"]
+position = Vector2(0, 121)
 
-[node name="LightButton1" type="Button" parent="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript/LightButton1"]
-offset_left = 320.0
-offset_top = 505.0
-offset_right = 384.0
-offset_bottom = 565.0
+[node name="LightButton1" type="Button" parent="PuzzlesShowInstances/PuzzleLightPrefab/PuzzleLightScript/LightButton1"]
+offset_left = 271.0
+offset_top = 317.0
+offset_right = 335.0
+offset_bottom = 377.0
 
-[node name="LightButton2" type="Node2D" parent="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript"]
+[node name="LightButton2" type="Node2D" parent="PuzzlesShowInstances/PuzzleLightPrefab/PuzzleLightScript"]
+position = Vector2(0, 121)
 
-[node name="LightButton2" type="Button" parent="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript/LightButton2"]
-offset_left = 426.0
-offset_top = 508.0
-offset_right = 490.0
-offset_bottom = 568.0
+[node name="LightButton2" type="Button" parent="PuzzlesShowInstances/PuzzleLightPrefab/PuzzleLightScript/LightButton2"]
+offset_left = 410.0
+offset_top = 324.0
+offset_right = 474.0
+offset_bottom = 384.0
 
-[node name="LightButton3" type="Node2D" parent="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript"]
+[node name="LightButton3" type="Node2D" parent="PuzzlesShowInstances/PuzzleLightPrefab/PuzzleLightScript"]
+position = Vector2(0, 121)
 
-[node name="LightButton3" type="Button" parent="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript/LightButton3"]
-offset_left = 545.0
-offset_top = 511.0
-offset_right = 609.0
-offset_bottom = 571.0
+[node name="LightButton3" type="Button" parent="PuzzlesShowInstances/PuzzleLightPrefab/PuzzleLightScript/LightButton3"]
+offset_left = 549.0
+offset_top = 325.0
+offset_right = 613.0
+offset_bottom = 385.0
 
-[node name="LightButton4" type="Node2D" parent="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript"]
+[node name="LightButton4" type="Node2D" parent="PuzzlesShowInstances/PuzzleLightPrefab/PuzzleLightScript"]
+position = Vector2(0, 121)
 
-[node name="LightButton4" type="Button" parent="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript/LightButton4"]
-offset_left = 664.0
-offset_top = 507.0
-offset_right = 728.0
-offset_bottom = 567.0
+[node name="LightButton4" type="Button" parent="PuzzlesShowInstances/PuzzleLightPrefab/PuzzleLightScript/LightButton4"]
+offset_left = 690.0
+offset_top = 322.0
+offset_right = 754.0
+offset_bottom = 382.0
 
-[node name="LightButton5" type="Node2D" parent="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript"]
+[node name="LightButton5" type="Node2D" parent="PuzzlesShowInstances/PuzzleLightPrefab/PuzzleLightScript"]
+position = Vector2(0, 121)
 
-[node name="LightButton5" type="Button" parent="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript/LightButton5"]
-offset_left = 769.0
-offset_top = 509.0
-offset_right = 833.0
-offset_bottom = 569.0
+[node name="LightButton5" type="Button" parent="PuzzlesShowInstances/PuzzleLightPrefab/PuzzleLightScript/LightButton5"]
+offset_left = 826.0
+offset_top = 321.0
+offset_right = 890.0
+offset_bottom = 381.0
+
+[node name="RemainingTime" type="Node2D" parent="."]
+
+[node name="RemainingTimeLabel" type="Label" parent="RemainingTime"]
+offset_left = 37.0
+offset_top = 40.0
+offset_right = 137.0
+offset_bottom = 82.0
+theme_override_font_sizes/font_size = 30
+text = "000"
+
+[node name="DisableButtons" type="Node2D" parent="."]
+
+[node name="DisableMathButtonMain" type="Node2D" parent="DisableButtons"]
+visible = false
+position = Vector2(56, 36)
+
+[node name="DisableButton" type="Node2D" parent="DisableButtons/DisableMathButtonMain" node_paths=PackedStringArray("timer", "timerCountDown", "buttonOpenDisable", "disablebuttonNode")]
+script = ExtResource("5_x82o3")
+timer = NodePath("Timer")
+timerCountDown = NodePath("CountDown")
+buttonOpenDisable = NodePath("../../../ButtonManager/OpenButtonPuzzles/OpenMathButton/OpenMathButton")
+disablebuttonNode = NodePath("..")
+
+[node name="Button" type="Button" parent="DisableButtons/DisableMathButtonMain/DisableButton"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 30.0
+offset_top = 22.0
+offset_right = 561.0
+offset_bottom = 330.0
+
+[node name="CountDown" type="Label" parent="DisableButtons/DisableMathButtonMain/DisableButton"]
+offset_left = 43.0
+offset_top = 38.0
+offset_right = 547.0
+offset_bottom = 332.0
+text = "cfslůkfdfůlsdkůsdkf
+sdfopsdkfpdkf
+sdfsdf
+sdf
+sdfsd
+kfsd"
+
+[node name="Timer" type="Timer" parent="DisableButtons/DisableMathButtonMain/DisableButton"]
+process_callback = 0
+
+[node name="DisableLightButtonMain" type="Node2D" parent="DisableButtons"]
+visible = false
+position = Vector2(112, 72)
+
+[node name="DisableButton" type="Node2D" parent="DisableButtons/DisableLightButtonMain" node_paths=PackedStringArray("timer", "timerCountDown", "buttonOpenDisable", "disablebuttonNode")]
+script = ExtResource("5_x82o3")
+timer = NodePath("Timer")
+timerCountDown = NodePath("CountDown1")
+buttonOpenDisable = NodePath("../../../ButtonManager/OpenButtonPuzzles/OpenLightButton/OpenLightButton")
+disablebuttonNode = NodePath("..")
+
+[node name="Button" type="Button" parent="DisableButtons/DisableLightButtonMain/DisableButton"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 30.0
+offset_top = 22.0
+offset_right = 561.0
+offset_bottom = 330.0
+
+[node name="CountDown1" type="Label" parent="DisableButtons/DisableLightButtonMain/DisableButton"]
+offset_left = -66.0
+offset_top = 284.0
+offset_right = 438.0
+offset_bottom = 578.0
+text = "cfslůkfdfůlsdkůsdkf
+sdfopsdkfpdkf
+sdfsdf
+sdf
+sdfsd
+kfsd"
+
+[node name="Timer" type="Timer" parent="DisableButtons/DisableLightButtonMain/DisableButton"]
+process_callback = 0
 
 [connection signal="timeout" from="Scripts/GameManager/Timer" to="Scripts/GameManager" method="_on_timer_timeout"]
 [connection signal="pressed" from="ButtonManager/OpenButtonPuzzles/OpenMathButton/OpenMathButton" to="ButtonManager/OpenButtonPuzzles" method="_on_open_math_button_pressed"]
 [connection signal="pressed" from="ButtonManager/OpenButtonPuzzles/OpenLightButton/OpenLightButton" to="ButtonManager/OpenButtonPuzzles" method="_on_open_light_button_pressed"]
-[connection signal="pressed" from="PuzzlesCloseInstances/PuzzleMathPrefab/BackButton" to="PuzzlesCloseInstances/PuzzleMathPrefab" method="_on_back_button_pressed"]
-[connection signal="pressed" from="PuzzlesCloseInstances/PuzzleMathPrefab/PuzzleMathScript/ButtonMath2" to="PuzzlesCloseInstances/PuzzleMathPrefab/PuzzleMathScript" method="_on_button_math_2_pressed"]
-[connection signal="pressed" from="PuzzlesCloseInstances/PuzzleMathPrefab/PuzzleMathScript/ButtonMath4" to="PuzzlesCloseInstances/PuzzleMathPrefab/PuzzleMathScript" method="_on_button_math_4_pressed"]
-[connection signal="pressed" from="PuzzlesCloseInstances/PuzzleMathPrefab/PuzzleMathScript/ButtonMath1" to="PuzzlesCloseInstances/PuzzleMathPrefab/PuzzleMathScript" method="_on_button_math_1_pressed"]
-[connection signal="pressed" from="PuzzlesCloseInstances/PuzzleMathPrefab/PuzzleMathScript/ButtonMath3" to="PuzzlesCloseInstances/PuzzleMathPrefab/PuzzleMathScript" method="_on_button_math_3_pressed"]
-[connection signal="pressed" from="PuzzlesCloseInstances/PuzzleLightPrefab/BackButton" to="PuzzlesCloseInstances/PuzzleLightPrefab" method="_on_back_button_pressed"]
-[connection signal="pressed" from="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript/LightButton1/LightButton1" to="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript" method="_on_light_button_1_pressed"]
-[connection signal="pressed" from="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript/LightButton2/LightButton2" to="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript" method="_on_light_button_2_pressed"]
-[connection signal="pressed" from="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript/LightButton3/LightButton3" to="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript" method="_on_light_button_3_pressed"]
-[connection signal="pressed" from="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript/LightButton4/LightButton4" to="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript" method="_on_light_button_4_pressed"]
-[connection signal="pressed" from="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript/LightButton5/LightButton5" to="PuzzlesCloseInstances/PuzzleLightPrefab/PuzzleLightScript" method="_on_light_button_5_pressed"]
+[connection signal="pressed" from="PuzzlesShowInstances/PuzzleMathPrefab/BackButton" to="PuzzlesShowInstances/PuzzleMathPrefab" method="_on_back_button_pressed"]
+[connection signal="pressed" from="PuzzlesShowInstances/PuzzleMathPrefab/PuzzleMathScript/ButtonMath2" to="PuzzlesShowInstances/PuzzleMathPrefab/PuzzleMathScript" method="_on_button_math_2_pressed"]
+[connection signal="pressed" from="PuzzlesShowInstances/PuzzleMathPrefab/PuzzleMathScript/ButtonMath4" to="PuzzlesShowInstances/PuzzleMathPrefab/PuzzleMathScript" method="_on_button_math_4_pressed"]
+[connection signal="pressed" from="PuzzlesShowInstances/PuzzleMathPrefab/PuzzleMathScript/ButtonMath1" to="PuzzlesShowInstances/PuzzleMathPrefab/PuzzleMathScript" method="_on_button_math_1_pressed"]
+[connection signal="pressed" from="PuzzlesShowInstances/PuzzleMathPrefab/PuzzleMathScript/ButtonMath3" to="PuzzlesShowInstances/PuzzleMathPrefab/PuzzleMathScript" method="_on_button_math_3_pressed"]
+[connection signal="pressed" from="PuzzlesShowInstances/PuzzleLightPrefab/BackButton" to="PuzzlesShowInstances/PuzzleLightPrefab" method="_on_back_button_pressed"]
+[connection signal="pressed" from="PuzzlesShowInstances/PuzzleLightPrefab/PuzzleLightScript/LightButton1/LightButton1" to="PuzzlesShowInstances/PuzzleLightPrefab/PuzzleLightScript" method="_on_light_button_1_pressed"]
+[connection signal="pressed" from="PuzzlesShowInstances/PuzzleLightPrefab/PuzzleLightScript/LightButton2/LightButton2" to="PuzzlesShowInstances/PuzzleLightPrefab/PuzzleLightScript" method="_on_light_button_2_pressed"]
+[connection signal="pressed" from="PuzzlesShowInstances/PuzzleLightPrefab/PuzzleLightScript/LightButton3/LightButton3" to="PuzzlesShowInstances/PuzzleLightPrefab/PuzzleLightScript" method="_on_light_button_3_pressed"]
+[connection signal="pressed" from="PuzzlesShowInstances/PuzzleLightPrefab/PuzzleLightScript/LightButton4/LightButton4" to="PuzzlesShowInstances/PuzzleLightPrefab/PuzzleLightScript" method="_on_light_button_4_pressed"]
+[connection signal="pressed" from="PuzzlesShowInstances/PuzzleLightPrefab/PuzzleLightScript/LightButton5/LightButton5" to="PuzzlesShowInstances/PuzzleLightPrefab/PuzzleLightScript" method="_on_light_button_5_pressed"]
+[connection signal="visibility_changed" from="DisableButtons/DisableMathButtonMain" to="DisableButtons/DisableMathButtonMain/DisableButton" method="_on_disable_math_button_main_visibility_changed"]
+[connection signal="timeout" from="DisableButtons/DisableMathButtonMain/DisableButton/Timer" to="DisableButtons/DisableMathButtonMain/DisableButton" method="_on_timer_timeout"]
+[connection signal="visibility_changed" from="DisableButtons/DisableLightButtonMain" to="DisableButtons/DisableLightButtonMain/DisableButton" method="_on_disable_math_button_main_visibility_changed"]
+[connection signal="timeout" from="DisableButtons/DisableLightButtonMain/DisableButton/Timer" to="DisableButtons/DisableLightButtonMain/DisableButton" method="_on_timer_timeout"]

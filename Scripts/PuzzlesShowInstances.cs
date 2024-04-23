@@ -1,10 +1,10 @@
 using Godot;
 using System;
 
-public partial class PuzzlesCloseInstances : Node2D
+public partial class PuzzlesShowInstances : Node2D
 {
 
-    public static PuzzlesCloseInstances i;
+    public static PuzzlesShowInstances i;
 
 
 

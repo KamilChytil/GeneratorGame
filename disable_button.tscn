@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://djknjgdm5oy42"]
+
+[ext_resource type="Script" path="res://Scripts/DisableButton.cs" id="1_coesk"]
+
+[node name="DisableButtonMain" type="Node2D"]
+position = Vector2(56, 36)
+
+[node name="DisableButton" type="Node2D" parent="."]
+script = ExtResource("1_coesk")
+
+[node name="Button" type="Button" parent="DisableButton"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 30.0
+offset_top = 22.0
+offset_right = 561.0
+offset_bottom = 330.0
+
+[node name="CountDown" type="Label" parent="DisableButton"]
+offset_left = 43.0
+offset_top = 38.0
+offset_right = 547.0
+offset_bottom = 332.0
+text = "cfslůkfdfůlsdkůsdkf
+sdfopsdkfpdkf
+sdfsdf
+sdf
+sdfsd
+kfsd"
+
+[node name="Timer" type="Timer" parent="DisableButton"]
+process_callback = 0
+
+[connection signal="visibility_changed" from="DisableButton" to="DisableButton" method="_on_visibility_changed"]
+[connection signal="timeout" from="DisableButton/Timer" to="DisableButton" method="_on_timer_timeout"]

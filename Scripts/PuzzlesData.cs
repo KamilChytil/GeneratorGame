@@ -18,14 +18,17 @@ public partial class PuzzlesData : Node
 
     public bool isMathCombinationGenerate = false;
 
-	public bool isLightPuzzleSolved = true;
-
-	public bool isMathPuzzleSolved = true;
+    public bool[] isPuzzleGenerate = new bool[2];
 
 	public bool isLeversUp = false;
 
     [Export]
     public Node2D[] buttonsOpenPuzzle = new Node2D[2];
+
+    [Export]
+    public Node2D[] disableButtons = new Node2D[2];
+
+    public int damageGeneratorPerSec;
     public override void _Ready()
 	{
 		i = this;
@@ -33,10 +36,8 @@ public partial class PuzzlesData : Node
         for (int i = 0; i < buttonsOpenPuzzle.Length; i++)
         {
             buttonsOpenPuzzle[i].Visible = false;
+            isPuzzleGenerate[i] = false;
         }
     }
 
-
-
-	
 }

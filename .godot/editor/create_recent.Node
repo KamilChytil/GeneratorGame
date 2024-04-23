@@ -1,5 +1,8 @@
-Node2D
-Timer
 Sprite2D
-Button
+AnimatedSprite2D
+Node2D
 Label
+Button
+Timer
+ProgressBar
+TabBar

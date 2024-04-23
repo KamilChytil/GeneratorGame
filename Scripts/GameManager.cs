@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class GameManager : Node2D
 {
@@ -16,12 +17,16 @@ public partial class GameManager : Node2D
 
 	private Random random = new Random();
 
-	private List<bool> arrayPuzzlesSolved = new List<bool>();
+
+	[Export]
+	public ProgressBar damegeProgressBar;
+
+	[Export]
+	public Label remainingTimeLabel;
+
+	private int reaperDamage;
 	public override void _Ready()
 	{
-
-		arrayPuzzlesSolved.Add(PuzzlesData.i.isLightPuzzleSolved);
-		arrayPuzzlesSolved.Add(PuzzlesData.i.isMathPuzzleSolved);
 
 		timer.Start();
 
@@ -40,48 +45,73 @@ public partial class GameManager : Node2D
 			remainingTime -= 1;
 			timerWhenPuzzleHappend -= 1;
 
+
+
+
 			if (timerWhenPuzzleHappend <= 0)
 			{
 				timerWhenPuzzleHappend = 5;
 
 				int choosePuzzle;
 				int allPuzzleOn = 0;
-
+				bool isPuzzleVisible;
 				do
 				{
-					
+					choosePuzzle = random.Next(0, PuzzlesData.i.buttonsOpenPuzzle.Count());
 
-					choosePuzzle = random.Next(0, arrayPuzzlesSolved.Count);
-
-					if (!PuzzlesData.i.buttonsOpenPuzzle[choosePuzzle].Visible)
+					isPuzzleVisible = PuzzlesData.i.buttonsOpenPuzzle[choosePuzzle].Visible;
+					if (!isPuzzleVisible)
 					{
 						PuzzlesData.i.buttonsOpenPuzzle[choosePuzzle].Visible = true;
-						//CreateCombination(choosePuzzle);
-
-						GD.Print(choosePuzzle + "choosePuzzle");
+						CreateCombination(choosePuzzle);
+						GD.Print(choosePuzzle + " was selected and made visible");
 					}
 
-					for (int i = 0; i < arrayPuzzlesSolved.Count; i++)
+					allPuzzleOn = 0;
+					for (int i = 0; i < PuzzlesData.i.buttonsOpenPuzzle.Count(); i++)
 					{
 						if (PuzzlesData.i.buttonsOpenPuzzle[i].Visible)
 						{
 							allPuzzleOn++;
-							GD.Print(allPuzzleOn + "allPuzzleOn");
 						}
 					}
 
-					if (allPuzzleOn == arrayPuzzlesSolved.Count)
+					if(allPuzzleOn == PuzzlesData.i.buttonsOpenPuzzle.Count())
 					{
-						GD.Print("Break");
+						GD.Print("BREAK");
+
 						break;
 					}
-				} while (PuzzlesData.i.buttonsOpenPuzzle[choosePuzzle].Visible == false);
+					GD.Print(allPuzzleOn + " visible puzzles");
 
+				} while (isPuzzleVisible);
 
 
 			}
 
 			UpdateTimerDisplay();
+
+			if(remainingTime == FiveLightAnimation.whenSpeedAnimation && FiveLightAnimation.whenSpeedAnimation >0)
+			{
+				FiveLightAnimation.SpeedAnimation();
+				FiveLightAnimation.whenSpeedAnimation -= 60;
+			}
+
+			if(damegeProgressBar.Value  >= 0)
+			{
+				damegeProgressBar.Value += PuzzlesData.i.damageGeneratorPerSec;
+				//reaperDamage += PuzzlesData.i.damageGeneratorPerSec;
+
+			}
+			else if (damegeProgressBar.Value < 0)
+			{
+				damegeProgressBar.Value = 0;
+			}
+		
+
+			
+
+
 
 			if (remainingTime <= 0)
 			{
@@ -92,6 +122,11 @@ public partial class GameManager : Node2D
 
 	private void UpdateTimerDisplay()
 	{
+		int minutes = (int)remainingTime / 60;
+		int seconds = (int)remainingTime % 60;
+		string formattedTime = $"{minutes}:{seconds:D2}";
+
+		remainingTimeLabel.Text = formattedTime;
 
 		GD.Print("RemainingTIme: " + remainingTime);
 	}
@@ -108,10 +143,22 @@ public partial class GameManager : Node2D
 		{
 			case 0:
 				MathPuzzle.iMathPuzzle.CreatePuzzleCombination();
+				PuzzlesData.i.damageGeneratorPerSec += 3;
+
 				break;
 			case 1:
+				LightPuzzle.iLightPuzzle.CreatePuzzleCombination();
+				PuzzlesData.i.damageGeneratorPerSec += 2;
+				LightOffOn.SetLightToWhite();
 				break;
 		}
+	}
+
+
+	public void UnClickebleOpenButton()
+	{
+
+
 	}
 
 }
