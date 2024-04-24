@@ -25,8 +25,12 @@ public partial class GameManager : Node2D
 	public Label remainingTimeLabel;
 
 	private int reaperDamage;
+
+	private int[] howMuchPuzzleGenerateDamage = new int[2];
+
 	public override void _Ready()
 	{
+		timerWhenPuzzleHappend = 5;
 
 		timer.Start();
 
@@ -65,6 +69,7 @@ public partial class GameManager : Node2D
 						PuzzlesData.i.buttonsOpenPuzzle[choosePuzzle].Visible = true;
 						CreateCombination(choosePuzzle);
 						GD.Print(choosePuzzle + " was selected and made visible");
+						StartDamageGenerate(choosePuzzle);
 					}
 
 					allPuzzleOn = 0;
@@ -85,13 +90,16 @@ public partial class GameManager : Node2D
 					GD.Print(allPuzzleOn + " visible puzzles");
 
 				} while (isPuzzleVisible);
+				
 
 
 			}
 
 			UpdateTimerDisplay();
 
-			if(remainingTime == FiveLightAnimation.whenSpeedAnimation && FiveLightAnimation.whenSpeedAnimation >0)
+			GenerateDamageGeneratePerSecond();
+
+			if (remainingTime == FiveLightAnimation.whenSpeedAnimation && FiveLightAnimation.whenSpeedAnimation >0)
 			{
 				FiveLightAnimation.SpeedAnimation();
 				FiveLightAnimation.whenSpeedAnimation -= 60;
@@ -99,7 +107,7 @@ public partial class GameManager : Node2D
 
 			if(damegeProgressBar.Value  >= 0)
 			{
-				damegeProgressBar.Value += PuzzlesData.i.damageGeneratorPerSec;
+				//damegeProgressBar.Value += PuzzlesData.i.damageGeneratorPerSec;
 				//reaperDamage += PuzzlesData.i.damageGeneratorPerSec;
 
 			}
@@ -155,11 +163,55 @@ public partial class GameManager : Node2D
 	}
 
 
-	public void UnClickebleOpenButton()
+
+	private void StartDamageGenerate(int choosePuzzle)
 	{
+			if (choosePuzzle < 3)
+			{
+				howMuchPuzzleGenerateDamage[choosePuzzle] += 1;
 
-
+			}
+		
 	}
 
+
+	private void GenerateDamageGeneratePerSecond()
+	{
+		for (int i = 0; i < howMuchPuzzleGenerateDamage.Length; i++)
+		{
+			if (howMuchPuzzleGenerateDamage[i] > 0)
+			{
+
+				howMuchPuzzleGenerateDamage[i] += 2;
+				//GD.Print("2222222howMuchPuzzleGenerateDamage[i]" + howMuchPuzzleGenerateDamage[i]);
+				//3 5 7 9 
+				damegeProgressBar.Value += 3;
+
+				RemoveDamageGenerator(i);
+
+			}
+
+
+		}
+	}
+
+
+	private void RemoveDamageGenerator(int i)
+	{
+		if (PuzzlesData.i.buttonsOpenPuzzle[i].Visible == false)
+		{
+			GD.Print("REmovehowMuchPuzzleGenerateDamage[i]" + howMuchPuzzleGenerateDamage[i]);
+
+			damegeProgressBar.Value -= howMuchPuzzleGenerateDamage[i];
+			howMuchPuzzleGenerateDamage[i] -= howMuchPuzzleGenerateDamage[i];
+
+
+		}
+	}
+
+
 }
+
+
+
 

@@ -2,9 +2,10 @@ res://main.tscn
 res://puzzle_prefab.tscn
 res://disable_button.tscn
 res://Scripts/BackButtonClick.cs
-res://Scripts/Button.cs
 res://Scripts/DisableButton.cs
+res://Scripts/FiveLightAnimation.cs
 res://Scripts/GameManager.cs
+res://Scripts/LightOffOn.cs
 res://Scripts/LightPuzzle.cs
 res://Scripts/MathPuzzle.cs
 res://Scripts/OpenPuzzles.cs
@@ -12,6 +13,3 @@ res://Scripts/Puzzle.cs
 res://Scripts/PuzzlesData.cs
 res://Scripts/PuzzlesShowInstances.cs
 res://Scripts/ShowDisableButton.cs
-res://Scripts/DisableButtonManager.cs
-res://Scripts/FiveLightAnimation.cs
-res://Scripts/LightOffOn.cs
