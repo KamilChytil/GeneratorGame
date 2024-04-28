@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cnar00m6ljcit"]
+[gd_scene load_steps=49 format=3 uid="uid://cnar00m6ljcit"]
 
 [ext_resource type="Script" path="res://Scripts/PuzzlesData.cs" id="1_n5gj1"]
 [ext_resource type="Texture2D" uid="uid://et4o5hy5xibo" path="res://icon.svg" id="2_ej384"]
@@ -11,12 +11,80 @@
 [ext_resource type="Script" path="res://Scripts/BackButtonClick.cs" id="5_kvdyx"]
 [ext_resource type="Script" path="res://Scripts/DisableButton.cs" id="5_x82o3"]
 [ext_resource type="Texture2D" uid="uid://b3h6pkw113pgt" path="res://Texture/light.png" id="6_f1wty"]
+[ext_resource type="Script" path="res://Scripts/ShowingScript/ShowingText.cs" id="6_il5w1"]
 [ext_resource type="Script" path="res://Scripts/LightOffOn.cs" id="6_twc5q"]
 [ext_resource type="Script" path="res://Scripts/PuzzlesShowInstances.cs" id="6_vk7do"]
 [ext_resource type="Script" path="res://Scripts/FiveLightAnimation.cs" id="7_37vhf"]
 [ext_resource type="Texture2D" uid="uid://2wws0n2ht4x" path="res://Texture/light_yellow.png" id="7_t6d6u"]
 [ext_resource type="Script" path="res://Scripts/LightPuzzle.cs" id="8_wd58b"]
+[ext_resource type="Script" path="res://Scripts/Switches.cs" id="9_oi8m4"]
+[ext_resource type="Texture2D" uid="uid://c6ilfr778y43k" path="res://Texture/switches/switch_down_better.png" id="10_devvm"]
+[ext_resource type="Texture2D" uid="uid://ba2lf5c67fu0r" path="res://Texture/Windows-10-Wallpaper-Error-1.jpg" id="11_15g7u"]
+[ext_resource type="Texture2D" uid="uid://c7mgpyg70l7pb" path="res://Texture/switches/switch_up_better.png" id="11_g61ss"]
+[ext_resource type="Texture2D" uid="uid://c0mhf80bqhnxl" path="res://Texture/appError.jpg" id="12_8nwty"]
+[ext_resource type="Texture2D" uid="uid://dgofitkj3qn81" path="res://Texture/switches/lever_down_better2.png" id="13_ikkt3"]
+[ext_resource type="Texture2D" uid="uid://dve22tod6h2fe" path="res://Texture/switches/lever_up_better2.png" id="14_8lcdt"]
+[ext_resource type="Texture2D" uid="uid://ro5kpppenkqe" path="res://Texture/Panels/3C7I5053.jpg" id="14_85dfi"]
+[ext_resource type="Texture2D" uid="uid://dd31cpnbipwe4" path="res://Texture/Panels/berabot_konstrukce.jpg" id="15_webdm"]
+[ext_resource type="Texture2D" uid="uid://de0l1vm6x4oas" path="res://Texture/Panels/maxresdefault.jpg" id="16_excbh"]
+[ext_resource type="Script" path="res://Scripts/ErrorWinMac.cs" id="16_hmbjg"]
 [ext_resource type="Texture2D" uid="uid://bwhgqh6eouimu" path="res://Texture/CloseBackGroundpng.png" id="16_ydd5s"]
+[ext_resource type="Texture2D" uid="uid://bjv0cn1cwkl4q" path="res://Texture/Panels/3C7I5355.jpg" id="17_ikpaw"]
+[ext_resource type="Texture2D" uid="uid://b1yg2wy83drms" path="res://Texture/Panels/RsR.jpg" id="18_y6bnt"]
+[ext_resource type="Texture2D" uid="uid://doewgijko8it8" path="res://Texture/Panels/133-1.jpg" id="20_kcmjo"]
+[ext_resource type="Texture2D" uid="uid://c1wb1rl72k4y8" path="res://Texture/Panels/fai_logo_cz_rgb.png" id="21_afkgk"]
+[ext_resource type="Texture2D" uid="uid://b1ovva8yvp1uf" path="res://Texture/Panels/O.jpg" id="22_jw386"]
+[ext_resource type="Texture2D" uid="uid://dicfq3p51ugh5" path="res://Texture/Panels/R.jpg" id="23_hiktw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_alaqv"]
+bg_color = Color(0.243137, 0.282353, 0.32549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eid5s"]
+bg_color = Color(0.0392157, 0.192157, 0.0862745, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eru48"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_g61ss")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_devvm")
+}],
+"loop": true,
+"name": &"Down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_g61ss")
+}],
+"loop": true,
+"name": &"Up",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j8xnl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_ikkt3")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_8lcdt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ikkt3")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2co6e"]
 animations = [{
@@ -183,20 +251,64 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l3cd2"]
 bg_color = Color(0.94902, 0, 0, 1)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_6jh21"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_85dfi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_webdm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_excbh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ikpaw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_y6bnt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_afg1l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_kcmjo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_afkgk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_jw386")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_hiktw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Main" type="Node2D"]
+scale = Vector2(1.40439, 1.29881)
 
 [node name="Scripts" type="Node2D" parent="."]
 
 [node name="PuzzlesData" type="Node2D" parent="Scripts" node_paths=PackedStringArray("buttonsOpenPuzzle", "disableButtons")]
 script = ExtResource("1_n5gj1")
-buttonsOpenPuzzle = [NodePath("../../ButtonManager/OpenButtonPuzzles/OpenMathButton"), NodePath("../../ButtonManager/OpenButtonPuzzles/OpenLightButton")]
+buttonsOpenPuzzle = [NodePath("../../ButtonManager/OpenButtonPuzzles/OpenMathButton"), NodePath("../../ButtonManager/OpenButtonPuzzles/OpenLightButton"), NodePath("../../PuzzlesShowInstances/Error/Sprite2D/WinErrorButton"), NodePath("../../PuzzlesShowInstances/Error/Sprite2D2/MacError"), NodePath("../../ButtonManager/OpenButtonPuzzles/SwitchePuzzle")]
 disableButtons = [NodePath("../../DisableButtons/DisableMathButtonMain"), NodePath("../../DisableButtons/DisableLightButtonMain")]
 
 [node name="GameManager" type="Node2D" parent="Scripts" node_paths=PackedStringArray("timer", "damegeProgressBar", "remainingTimeLabel")]
 script = ExtResource("2_vhtfj")
 timer = NodePath("Timer")
 damegeProgressBar = NodePath("../../DamageBar/ProgressBar")
-remainingTimeLabel = NodePath("../../RemainingTime/RemainingTimeLabel")
+remainingTimeLabel = NodePath("../../Grafika/RemainingTime/RemainingTime/RemainingTimeLabel")
 
 [node name="Timer" type="Timer" parent="Scripts/GameManager"]
 process_callback = 0
@@ -207,39 +319,84 @@ process_callback = 0
 light_mask = 2
 visibility_layer = 2
 position = Vector2(589, 329)
+scale = Vector2(1, 1)
 texture = ExtResource("3_4281x")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Grafika"]
-position = Vector2(66, 66)
-scale = Vector2(0.108046, 0.0959289)
+[node name="LeftPanels" type="Node2D" parent="Grafika"]
+position = Vector2(717.037, 64.6745)
+scale = Vector2(1, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Grafika/LeftPanels"]
+position = Vector2(116.777, 150.137)
+scale = Vector2(0.230831, 0.121808)
 texture = ExtResource("4_46afm")
 
-[node name="LightPanel" type="Sprite2D" parent="Grafika"]
+[node name="ProgressBar2" type="ProgressBar" parent="Grafika/LeftPanels/Sprite2D"]
+offset_left = -280.711
+offset_top = -271.798
+offset_right = -108.746
+offset_bottom = 328.202
+scale = Vector2(0.463702, 0.838676)
+theme_override_styles/background = SubResource("StyleBoxFlat_alaqv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_eid5s")
+value = 42.99
+fill_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="ProgressBar" type="ProgressBar" parent="Grafika/LeftPanels/Sprite2D"]
+offset_left = -444.202
+offset_top = -259.156
+offset_right = -272.237
+offset_bottom = 340.844
+scale = Vector2(0.444558, 0.801424)
+theme_override_styles/background = SubResource("StyleBoxFlat_alaqv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_eid5s")
+value = 42.99
+fill_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="RemainingTime" type="Sprite2D" parent="Grafika"]
+position = Vector2(91.1427, 85.4627)
+rotation = -0.523599
+scale = Vector2(0.096975, 0.108618)
+skew = 0.523599
+texture = ExtResource("4_46afm")
+
+[node name="RemainingTime" type="Node2D" parent="Grafika/RemainingTime"]
+position = Vector2(-610.851, -688.01)
+scale = Vector2(9.25532, 10.4244)
+
+[node name="RemainingTimeLabel" type="Label" parent="Grafika/RemainingTime/RemainingTime"]
+offset_left = 15.8626
+offset_top = 33.3225
+offset_right = 116.863
+offset_bottom = 102.322
+scale = Vector2(1, 0.929346)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "5:00"
+
+[node name="LightPanelShowingText" type="Sprite2D" parent="Grafika" node_paths=PackedStringArray("monitorTextShowing", "panelTextTimer")]
 position = Vector2(580, 283)
 scale = Vector2(-0.152493, 0.278139)
 texture = ExtResource("5_1tuxf")
+script = ExtResource("6_il5w1")
+monitorTextShowing = NodePath("ShowingText")
+panelTextTimer = NodePath("Timer")
+textShowOnMonitor = PackedStringArray("Scaning process ... .0%", "Scaning process ... .10%", "Scaning process ...  20%", "Scaning process ... .30%", "Scaning process ... .40%", "Scaning process ... .50%", "Scaning process ... .60%")
 
-[node name="Label" type="Label" parent="Grafika/LightPanel"]
-offset_left = 485.0
-offset_top = -323.0
-offset_right = 3506.0
-offset_bottom = 2695.0
-scale = Vector2(-0.403625, 0.334472)
+[node name="ShowingText" type="Label" parent="Grafika/LightPanelShowingText"]
+offset_left = 504.941
+offset_top = -337.961
+offset_right = 3525.94
+offset_bottom = 2680.04
+scale = Vector2(-0.359, 0.225)
 theme_override_colors/font_color = Color(0, 1, 0, 1)
-theme_override_font_sizes/font_size = 100
-text = "asdaskdjaslkdjas
-dasaasdw
-sdůkjaslůdjaslkůdaslůdkasůaswaddal d
-asda
-sdůlaskdůalskdlůkwpaokfpůdoskfpůadlof
-dfsdfl§ůsdflsdf§sdf¨§sldf§s
-sdasadasdasdúpeorúrptlog
-dasdasdasdsdasdůlkasdůlkasdůasd
-asldkasdůlaskdůlaskdasůd
-asdlkasůldkasůdlak
-sdaskdůasldkasůldkasdů
-asdůsaldksaůdlkasůd
-asdklsakdlskdpúofksg"
+theme_override_colors/font_shadow_color = Color(0.25098, 0.14902, 0.14902, 1)
+theme_override_font_sizes/font_size = 150
+
+[node name="Timer" type="Timer" parent="Grafika/LightPanelShowingText"]
+process_callback = 0
 
 [node name="Simon_S" type="Sprite2D" parent="Grafika"]
 position = Vector2(366.539, 242.681)
@@ -249,6 +406,11 @@ texture = ExtResource("5_1tuxf")
 [node name="SimonS" type="Sprite2D" parent="Grafika"]
 position = Vector2(366.539, 377.681)
 scale = Vector2(0.159, 0.174)
+texture = ExtResource("5_1tuxf")
+
+[node name="MathPuzzle" type="Sprite2D" parent="Grafika"]
+position = Vector2(835, 356)
+scale = Vector2(0.231, 0.226)
 texture = ExtResource("5_1tuxf")
 
 [node name="Light" type="Node2D" parent="Grafika"]
@@ -279,6 +441,66 @@ texture = ExtResource("6_f1wty")
 position = Vector2(702.8, 212.2)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("6_f1wty")
+
+[node name="Switches" type="Node2D" parent="Grafika" node_paths=PackedStringArray("buttonSwitches")]
+position = Vector2(-2.13616, 2.3098)
+scale = Vector2(1, 1)
+script = ExtResource("9_oi8m4")
+buttonSwitches = [NodePath("Switch1/switch1Button"), NodePath("switch2/switch2Button"), NodePath("switch3/switch3Button")]
+
+[node name="Switch1" type="AnimatedSprite2D" parent="Grafika/Switches"]
+position = Vector2(1019.66, 227.9)
+rotation = 2.26893
+scale = Vector2(0.109044, -0.178)
+skew = 0.872665
+sprite_frames = SubResource("SpriteFrames_eru48")
+animation = &"Down"
+speed_scale = 0.1
+
+[node name="switch1Button" type="Button" parent="Grafika/Switches/Switch1"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -145.872
+offset_top = -356.541
+offset_right = -137.872
+offset_bottom = -348.541
+scale = Vector2(39.3112, 88.5353)
+
+[node name="switch2" type="AnimatedSprite2D" parent="Grafika/Switches"]
+position = Vector2(242.81, 79.3032)
+rotation = -0.523599
+scale = Vector2(0.166109, 0.188208)
+skew = 0.523599
+sprite_frames = SubResource("SpriteFrames_j8xnl")
+animation = &"up"
+speed_scale = 0.1
+
+[node name="switch2Button" type="Button" parent="Grafika/Switches/switch2"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -113.845
+offset_top = -279.327
+offset_right = -105.845
+offset_bottom = -271.327
+scale = Vector2(29.9543, 68.7391)
+
+[node name="switch3" type="AnimatedSprite2D" parent="Grafika/Switches"]
+position = Vector2(1023.93, 386.507)
+rotation = -0.872665
+scale = Vector2(-0.129, 0.202)
+skew = 0.872665
+sprite_frames = SubResource("SpriteFrames_j8xnl")
+animation = &"up"
+speed_scale = 0.1
+
+[node name="switch3Button" type="Button" parent="Grafika/Switches/switch3"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 154.572
+offset_top = -311.934
+offset_right = 162.572
+offset_bottom = -303.934
+scale = Vector2(-30.4524, 74.1887)
 
 [node name="Animation" type="Node2D" parent="Grafika"]
 script = ExtResource("7_37vhf")
@@ -348,8 +570,14 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_l3cd2")
 position = Vector2(0, -2)
 script = ExtResource("3_a40v4")
 
-[node name="OpenMathButton" type="Node2D" parent="ButtonManager/OpenButtonPuzzles"]
+[node name="SwitchePuzzle" type="Node2D" parent="ButtonManager/OpenButtonPuzzles"]
 visible = false
+position = Vector2(0, 2)
+scale = Vector2(1, 1)
+
+[node name="OpenMathButton" type="Node2D" parent="ButtonManager/OpenButtonPuzzles"]
+position = Vector2(650.816, 240.68)
+scale = Vector2(0.704299, 0.945085)
 
 [node name="OpenMathButton" type="Button" parent="ButtonManager/OpenButtonPuzzles/OpenMathButton"]
 offset_left = 59.0
@@ -364,10 +592,10 @@ position = Vector2(300, -14)
 
 [node name="OpenLightButton" type="Button" parent="ButtonManager/OpenButtonPuzzles/OpenLightButton"]
 modulate = Color(1, 1, 1, 0)
-offset_left = 174.0
-offset_top = 245.0
-offset_right = 574.0
-offset_bottom = 412.0
+offset_left = 185.0
+offset_top = 189.0
+offset_right = 545.0
+offset_bottom = 394.0
 scale = Vector2(0.533309, 1.31827)
 text = "
 
@@ -377,6 +605,76 @@ text = "
 script = ExtResource("6_vk7do")
 mathPuzzleNode = NodePath("PuzzleMathPrefab")
 lightPuzzlNode = NodePath("PuzzleLightPrefab")
+
+[node name="Error" type="Node2D" parent="PuzzlesShowInstances"]
+position = Vector2(-639.423, -9.23921)
+script = ExtResource("16_hmbjg")
+
+[node name="Sprite2D" type="Sprite2D" parent="PuzzlesShowInstances/Error"]
+position = Vector2(744.807, 250.229)
+rotation = -0.523599
+scale = Vector2(0.150608, 0.181987)
+skew = 0.523599
+texture = ExtResource("4_46afm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PuzzlesShowInstances/Error/Sprite2D"]
+position = Vector2(-2.74072, -9.77515)
+scale = Vector2(0.96, 0.9)
+sprite_frames = SubResource("SpriteFrames_6jh21")
+autoplay = "default"
+frame = 1
+frame_progress = 0.830627
+speed_scale = 0.15
+
+[node name="WinErrorButton" type="Node2D" parent="PuzzlesShowInstances/Error/Sprite2D"]
+visible = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="PuzzlesShowInstances/Error/Sprite2D/WinErrorButton"]
+position = Vector2(-2.96094, -9.53711)
+scale = Vector2(0.601, 0.671)
+texture = ExtResource("11_15g7u")
+
+[node name="WinButton" type="Button" parent="PuzzlesShowInstances/Error/Sprite2D/WinErrorButton"]
+modulate = Color(0, 0, 0, 0)
+offset_left = -589.151
+offset_top = -371.463
+offset_right = -581.151
+offset_bottom = -363.463
+scale = Vector2(145.233, 90.773)
+
+[node name="Sprite2D2" type="Sprite2D" parent="PuzzlesShowInstances/Error"]
+position = Vector2(749.792, 443.482)
+rotation = -0.523599
+scale = Vector2(0.151678, 0.180385)
+skew = 0.523599
+texture = ExtResource("4_46afm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PuzzlesShowInstances/Error/Sprite2D2"]
+position = Vector2(-1.953, -9.491)
+scale = Vector2(0.953, 1.805)
+sprite_frames = SubResource("SpriteFrames_afg1l")
+autoplay = "default"
+frame = 2
+frame_progress = 0.352332
+speed_scale = 0.15
+
+[node name="MacError" type="Node2D" parent="PuzzlesShowInstances/Error/Sprite2D2"]
+visible = false
+position = Vector2(-8576.93, -2082.15)
+scale = Vector2(9.43396, 9.77534)
+
+[node name="Sprite2D2" type="Sprite2D" parent="PuzzlesShowInstances/Error/Sprite2D2/MacError"]
+position = Vector2(908.974, 212.024)
+scale = Vector2(0.23426, 0.230683)
+texture = ExtResource("12_8nwty")
+
+[node name="MacButton" type="Button" parent="PuzzlesShowInstances/Error/Sprite2D2/MacError"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 848.0
+offset_top = 176.0
+offset_right = 856.0
+offset_bottom = 184.0
+scale = Vector2(14.96, 8.88)
 
 [node name="PuzzleMathPrefab" type="Node2D" parent="PuzzlesShowInstances" node_paths=PackedStringArray("puzzlePrefab")]
 visible = false
@@ -594,20 +892,10 @@ offset_top = 321.0
 offset_right = 890.0
 offset_bottom = 381.0
 
-[node name="RemainingTime" type="Node2D" parent="."]
-
-[node name="RemainingTimeLabel" type="Label" parent="RemainingTime"]
-offset_left = 37.0
-offset_top = 40.0
-offset_right = 137.0
-offset_bottom = 82.0
-theme_override_font_sizes/font_size = 30
-text = "000"
-
 [node name="DisableButtons" type="Node2D" parent="."]
+visible = false
 
 [node name="DisableMathButtonMain" type="Node2D" parent="DisableButtons"]
-visible = false
 position = Vector2(56, 36)
 
 [node name="DisableButton" type="Node2D" parent="DisableButtons/DisableMathButtonMain" node_paths=PackedStringArray("timer", "timerCountDown", "buttonOpenDisable", "disablebuttonNode")]
@@ -640,7 +928,6 @@ kfsd"
 process_callback = 0
 
 [node name="DisableLightButtonMain" type="Node2D" parent="DisableButtons"]
-visible = false
 position = Vector2(112, 72)
 
 [node name="DisableButton" type="Node2D" parent="DisableButtons/DisableLightButtonMain" node_paths=PackedStringArray("timer", "timerCountDown", "buttonOpenDisable", "disablebuttonNode")]
@@ -673,8 +960,17 @@ kfsd"
 process_callback = 0
 
 [connection signal="timeout" from="Scripts/GameManager/Timer" to="Scripts/GameManager" method="_on_timer_timeout"]
+[connection signal="timeout" from="Grafika/LightPanelShowingText/Timer" to="Grafika/LightPanelShowingText" method="_on_timer_timeout"]
+[connection signal="button_down" from="Grafika/Switches/Switch1/switch1Button" to="Grafika/Switches" method="_on_switch_1_button_button_down"]
+[connection signal="pressed" from="Grafika/Switches/Switch1/switch1Button" to="Grafika/Switches" method="_on_switch_1_button_pressed"]
+[connection signal="button_down" from="Grafika/Switches/switch2/switch2Button" to="Grafika/Switches" method="_on_switch_2_button_button_down"]
+[connection signal="pressed" from="Grafika/Switches/switch2/switch2Button" to="Grafika/Switches" method="_on_switch_2_button_pressed"]
+[connection signal="button_down" from="Grafika/Switches/switch3/switch3Button" to="Grafika/Switches" method="_on_switch_3_button_button_down"]
+[connection signal="pressed" from="Grafika/Switches/switch3/switch3Button" to="Grafika/Switches" method="_on_switch_3_button_pressed"]
 [connection signal="pressed" from="ButtonManager/OpenButtonPuzzles/OpenMathButton/OpenMathButton" to="ButtonManager/OpenButtonPuzzles" method="_on_open_math_button_pressed"]
 [connection signal="pressed" from="ButtonManager/OpenButtonPuzzles/OpenLightButton/OpenLightButton" to="ButtonManager/OpenButtonPuzzles" method="_on_open_light_button_pressed"]
+[connection signal="pressed" from="PuzzlesShowInstances/Error/Sprite2D/WinErrorButton/WinButton" to="PuzzlesShowInstances/Error" method="_on_win_button_pressed"]
+[connection signal="pressed" from="PuzzlesShowInstances/Error/Sprite2D2/MacError/MacButton" to="PuzzlesShowInstances/Error" method="_on_mac_button_pressed"]
 [connection signal="pressed" from="PuzzlesShowInstances/PuzzleMathPrefab/BackButton" to="PuzzlesShowInstances/PuzzleMathPrefab" method="_on_back_button_pressed"]
 [connection signal="pressed" from="PuzzlesShowInstances/PuzzleMathPrefab/PuzzleMathScript/ButtonMath2" to="PuzzlesShowInstances/PuzzleMathPrefab/PuzzleMathScript" method="_on_button_math_2_pressed"]
 [connection signal="pressed" from="PuzzlesShowInstances/PuzzleMathPrefab/PuzzleMathScript/ButtonMath4" to="PuzzlesShowInstances/PuzzleMathPrefab/PuzzleMathScript" method="_on_button_math_4_pressed"]

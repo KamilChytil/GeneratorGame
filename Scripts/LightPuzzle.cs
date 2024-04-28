@@ -117,7 +117,6 @@ public partial class LightPuzzle : Puzzle
 			lightCombination = new List<int> { 1, 0, 4, 2, 3 };
 
 		}
-		PuzzlesData.i.isPuzzleGenerate[1] = true;
 
 	}
 

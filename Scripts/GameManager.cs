@@ -7,7 +7,6 @@ public partial class GameManager : Node2D
 {
 	// Called when the node enters the scene tree for the first time.
 
-
 	[Export]
 	public Timer timer;
 
@@ -26,7 +25,7 @@ public partial class GameManager : Node2D
 
 	private int reaperDamage;
 
-	private int[] howMuchPuzzleGenerateDamage = new int[2];
+	private int[] howMuchPuzzleGenerateDamage = new int[5];
 
 	public override void _Ready()
 	{
@@ -57,7 +56,6 @@ public partial class GameManager : Node2D
 				timerWhenPuzzleHappend = 5;
 
 				int choosePuzzle;
-				int allPuzzleOn = 0;
 				bool isPuzzleVisible;
 				do
 				{
@@ -66,13 +64,24 @@ public partial class GameManager : Node2D
 					isPuzzleVisible = PuzzlesData.i.buttonsOpenPuzzle[choosePuzzle].Visible;
 					if (!isPuzzleVisible)
 					{
-						PuzzlesData.i.buttonsOpenPuzzle[choosePuzzle].Visible = true;
-						CreateCombination(choosePuzzle);
-						GD.Print(choosePuzzle + " was selected and made visible");
-						StartDamageGenerate(choosePuzzle);
-					}
+						if(choosePuzzle < 2 || choosePuzzle == 4)
+						{
+							PuzzlesData.i.buttonsOpenPuzzle[choosePuzzle].Visible = true;
+							CreateCombination(choosePuzzle);
+							//GD.Print(choosePuzzle + " was selected and made visible");
+							StartDamageGenerate(choosePuzzle);
 
-					allPuzzleOn = 0;
+						}
+						else if(choosePuzzle >= 2 && choosePuzzle <= 3)
+						{
+
+                            PuzzlesData.i.buttonsOpenPuzzle[choosePuzzle].Visible = true;
+                            StartDamageGenerate(choosePuzzle);
+
+                        }
+                    }
+
+					int allPuzzleOn = 0;
 					for (int i = 0; i < PuzzlesData.i.buttonsOpenPuzzle.Count(); i++)
 					{
 						if (PuzzlesData.i.buttonsOpenPuzzle[i].Visible)
@@ -83,11 +92,9 @@ public partial class GameManager : Node2D
 
 					if(allPuzzleOn == PuzzlesData.i.buttonsOpenPuzzle.Count())
 					{
-						GD.Print("BREAK");
 
 						break;
 					}
-					GD.Print(allPuzzleOn + " visible puzzles");
 
 				} while (isPuzzleVisible);
 				
@@ -159,6 +166,12 @@ public partial class GameManager : Node2D
 				PuzzlesData.i.damageGeneratorPerSec += 2;
 				LightOffOn.SetLightToWhite();
 				break;
+			case 4:
+				Switches.iSwitches.CreatePuzzleCombination();
+                PuzzlesData.i.damageGeneratorPerSec += 2;
+
+                break;
+
 		}
 	}
 
@@ -166,33 +179,46 @@ public partial class GameManager : Node2D
 
 	private void StartDamageGenerate(int choosePuzzle)
 	{
-			if (choosePuzzle < 3)
-			{
-				howMuchPuzzleGenerateDamage[choosePuzzle] += 1;
+			
+		howMuchPuzzleGenerateDamage[choosePuzzle] += 1;
+		damegeProgressBar.Value += 1;
 
-			}
-		
-	}
+    }
 
 
-	private void GenerateDamageGeneratePerSecond()
+    private void GenerateDamageGeneratePerSecond()
 	{
 		for (int i = 0; i < howMuchPuzzleGenerateDamage.Length; i++)
 		{
-			if (howMuchPuzzleGenerateDamage[i] > 0)
+
+			if(i < 2 || i ==4)
 			{
+				if (howMuchPuzzleGenerateDamage[i] > 0)
+				{
 
-				howMuchPuzzleGenerateDamage[i] += 2;
-				//GD.Print("2222222howMuchPuzzleGenerateDamage[i]" + howMuchPuzzleGenerateDamage[i]);
-				//3 5 7 9 
-				damegeProgressBar.Value += 3;
+					howMuchPuzzleGenerateDamage[i] += 2;
+					damegeProgressBar.Value += 2;
 
-				RemoveDamageGenerator(i);
+					RemoveDamageGenerator(i);
+
+				}
 
 			}
+			else if ( i >= 2 && i < 4)
 
+            {
+                if (howMuchPuzzleGenerateDamage[i] > 0)
+                {
 
-		}
+                    howMuchPuzzleGenerateDamage[i] += 1;
+                    damegeProgressBar.Value += 1;
+
+                    RemoveDamageGenerator(i);
+
+                }
+
+            }
+        }
 	}
 
 
@@ -200,7 +226,6 @@ public partial class GameManager : Node2D
 	{
 		if (PuzzlesData.i.buttonsOpenPuzzle[i].Visible == false)
 		{
-			GD.Print("REmovehowMuchPuzzleGenerateDamage[i]" + howMuchPuzzleGenerateDamage[i]);
 
 			damegeProgressBar.Value -= howMuchPuzzleGenerateDamage[i];
 			howMuchPuzzleGenerateDamage[i] -= howMuchPuzzleGenerateDamage[i];

@@ -34,7 +34,7 @@ public partial class FiveLightAnimation : Node2D
 	{
 		for (int i = 0; i < lightAnimSprite.Length; i++)
 		{
-			lightAnimSprite[i].SpeedScale = lightAnimSprite[i].SpeedScale + 0.2f;
+            lightAnimSprite[i].SpeedScale = lightAnimSprite[i].SpeedScale + 0.2f;
 		}
 
 	}
