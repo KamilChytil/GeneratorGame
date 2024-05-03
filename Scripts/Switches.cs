@@ -41,16 +41,15 @@ public partial class Switches : Puzzle
 		for (int i = 0; i < switchesAnim.Length; i++)
 		{
 			buttonSwitches[i].Disabled = true;
+			GD.PrintErr(PuzzlesData.i.isLeversUp);
 
-		   if (PuzzlesData.i.isLeversUp == false)
+           if (PuzzlesData.i.isLeversUp == true)
 			{
 				switchesAnim[i].SetFrameAndProgress(0, 0f);
-				GD.PrintErr("switchesAnim  " + switchesAnim[i]);
 			}
 			else
 			{
 				switchesAnim[i].SetFrameAndProgress(1, 0f);
-				GD.PrintErr("switchesAnim  " + switchesAnim[i]);
 
 			}
 		}
@@ -70,7 +69,7 @@ public partial class Switches : Puzzle
 		GD.Print("firstSwitch "+ firstSwitch);
 		GD.Print("secondSwitch " + secondSwitch);
 
-		if (PuzzlesData.i.isLeversUp == false)
+		if (PuzzlesData.i.isLeversUp == true)
 		{
 			switchesAnim[firstSwitch].SetFrameAndProgress(1, 0f);
 			switchesAnim[firstSwitch].SetFrameAndProgress(1, 0f);
@@ -94,60 +93,6 @@ public partial class Switches : Puzzle
 	{
 	}
 
-
-	//private void _on_switch_1_button_pressed()
-	//{
-	//	if (switchesAnim[0].Frame == 1)
-	//	{
-	//		switchesAnim[0].SetFrameAndProgress(0, 0f);
-	//		SolvePuzzleCombination(0);
-	//		buttonSwitches[0].Disabled = true;
-
-	//	}
-	//	else
-	//	{
-	//		switchesAnim[0].SetFrameAndProgress(1, 0f);
-	//		SolvePuzzleCombination(0);
-	//		buttonSwitches[0].Disabled = true;
-
-	//	}
-	//}
-
-
-	//private void _on_switch_2_button_pressed()
-	//{
-	//	if (switchesAnim[1].Frame == 1)
-	//	{
-	//		switchesAnim[1].SetFrameAndProgress(0, 0f);
-	//		SolvePuzzleCombination(1);
-	//		buttonSwitches[1].Disabled = true;
-
-	//	}
-	//	else
-	//	{
-	//		switchesAnim[1].SetFrameAndProgress(1, 0f);
-	//		SolvePuzzleCombination(1);
-	//		buttonSwitches[1].Disabled = true;
-
-	//	}
-	//}
-
-
-	//private void _on_switch_3_button_pressed()
-	//{
-	//	if (switchesAnim[2].Frame == 1)
-	//	{
-	//		switchesAnim[2].SetFrameAndProgress(0, 0f);
-	//		SolvePuzzleCombination(2);
-
-	//	}
-	//	else
-	//	{
-	//		switchesAnim[2].SetFrameAndProgress(1, 0f);
-	//		SolvePuzzleCombination(2);
-
-	//	}
-	//}
 
 
 	private void _on_switch_1_button_button_down()

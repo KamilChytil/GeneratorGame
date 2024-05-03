@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2dCDrX7cuxAl8oSPN79bXrIlWgV6b8F9Nliw1I5tLxee/mTTWDkkCk4m46p17kk8R9E+JADS3pKK2IbWzUw+yw==",
+  "dgSpecHash": "OK67BjQGdMO51NqnHZZzyIQzX+tKSWaarGXRnx1g0XXf1We4/P9sB4Zw3CEK+16h0REimkicL6pErBGWEzob2A==",
   "success": true,
-  "projectFilePath": "C:\\Hry\\Godot\\GeneratorGame\\Generator Game.csproj",
+  "projectFilePath": "C:\\HRY\\GODOT\\GENERATORGAME\\Generator Game.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Kamil\\.nuget\\packages\\godot.sourcegenerators\\4.2.1\\godot.sourcegenerators.4.2.1.nupkg.sha512",
     "C:\\Users\\Kamil\\.nuget\\packages\\godotsharp\\4.2.1\\godotsharp.4.2.1.nupkg.sha512",

@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://cnar00m6ljcit"]
+[gd_scene load_steps=56 format=3 uid="uid://cnar00m6ljcit"]
 
 [ext_resource type="Script" path="res://Scripts/PuzzlesData.cs" id="1_n5gj1"]
 [ext_resource type="Texture2D" uid="uid://et4o5hy5xibo" path="res://icon.svg" id="2_ej384"]
@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://b3h6pkw113pgt" path="res://Texture/light.png" id="6_f1wty"]
 [ext_resource type="Script" path="res://Scripts/ShowingScript/ShowingText.cs" id="6_il5w1"]
 [ext_resource type="Script" path="res://Scripts/LightOffOn.cs" id="6_twc5q"]
-[ext_resource type="Script" path="res://Scripts/PuzzlesShowInstances.cs" id="6_vk7do"]
+[ext_resource type="Script" path="res://Scripts/ShowingScript/PuzzlesShowInstances.cs" id="6_vk7do"]
 [ext_resource type="Script" path="res://Scripts/FiveLightAnimation.cs" id="7_37vhf"]
 [ext_resource type="Texture2D" uid="uid://2wws0n2ht4x" path="res://Texture/light_yellow.png" id="7_t6d6u"]
 [ext_resource type="Script" path="res://Scripts/LightPuzzle.cs" id="8_wd58b"]
@@ -26,15 +26,22 @@
 [ext_resource type="Texture2D" uid="uid://dve22tod6h2fe" path="res://Texture/switches/lever_up_better2.png" id="14_8lcdt"]
 [ext_resource type="Texture2D" uid="uid://ro5kpppenkqe" path="res://Texture/Panels/3C7I5053.jpg" id="14_85dfi"]
 [ext_resource type="Texture2D" uid="uid://dd31cpnbipwe4" path="res://Texture/Panels/berabot_konstrukce.jpg" id="15_webdm"]
+[ext_resource type="Script" path="res://Scripts/BarPuzzle.cs" id="16_26gfy"]
 [ext_resource type="Texture2D" uid="uid://de0l1vm6x4oas" path="res://Texture/Panels/maxresdefault.jpg" id="16_excbh"]
 [ext_resource type="Script" path="res://Scripts/ErrorWinMac.cs" id="16_hmbjg"]
 [ext_resource type="Texture2D" uid="uid://bwhgqh6eouimu" path="res://Texture/CloseBackGroundpng.png" id="16_ydd5s"]
 [ext_resource type="Texture2D" uid="uid://bjv0cn1cwkl4q" path="res://Texture/Panels/3C7I5355.jpg" id="17_ikpaw"]
+[ext_resource type="Texture2D" uid="uid://b46jqy6uj5oow" path="res://Texture/arrow.png" id="17_sx6k0"]
 [ext_resource type="Texture2D" uid="uid://b1yg2wy83drms" path="res://Texture/Panels/RsR.jpg" id="18_y6bnt"]
 [ext_resource type="Texture2D" uid="uid://doewgijko8it8" path="res://Texture/Panels/133-1.jpg" id="20_kcmjo"]
 [ext_resource type="Texture2D" uid="uid://c1wb1rl72k4y8" path="res://Texture/Panels/fai_logo_cz_rgb.png" id="21_afkgk"]
 [ext_resource type="Texture2D" uid="uid://b1ovva8yvp1uf" path="res://Texture/Panels/O.jpg" id="22_jw386"]
 [ext_resource type="Texture2D" uid="uid://dicfq3p51ugh5" path="res://Texture/Panels/R.jpg" id="23_hiktw"]
+[ext_resource type="Texture2D" uid="uid://b1gl55iekmvjj" path="res://Texture/Screw/Hole.png" id="38_72ugg"]
+[ext_resource type="Texture2D" uid="uid://bedi1054fdxl3" path="res://Texture/Screw/Screw.png" id="39_ghfq7"]
+[ext_resource type="Texture2D" uid="uid://86ohql7yncgs" path="res://Texture/table_better_fix.png" id="40_s16jy"]
+[ext_resource type="Texture2D" uid="uid://cwledwnfwkypm" path="res://Texture/Paper_lines.png" id="41_7dlmn"]
+[ext_resource type="Texture2D" uid="uid://dqk6ufdu5jrhw" path="res://Texture/Paper.png" id="42_3n51w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_alaqv"]
 bg_color = Color(0.243137, 0.282353, 0.32549, 1)
@@ -295,14 +302,15 @@ animations = [{
 }]
 
 [node name="Main" type="Node2D"]
-scale = Vector2(1.40439, 1.29881)
+scale = Vector2(1.11137, 1.19794)
 
 [node name="Scripts" type="Node2D" parent="."]
 
-[node name="PuzzlesData" type="Node2D" parent="Scripts" node_paths=PackedStringArray("buttonsOpenPuzzle", "disableButtons")]
+[node name="PuzzlesData" type="Node2D" parent="Scripts" node_paths=PackedStringArray("buttonsOpenPuzzle", "disableButtons", "zoomProgressBars")]
 script = ExtResource("1_n5gj1")
-buttonsOpenPuzzle = [NodePath("../../ButtonManager/OpenButtonPuzzles/OpenMathButton"), NodePath("../../ButtonManager/OpenButtonPuzzles/OpenLightButton"), NodePath("../../PuzzlesShowInstances/Error/Sprite2D/WinErrorButton"), NodePath("../../PuzzlesShowInstances/Error/Sprite2D2/MacError"), NodePath("../../ButtonManager/OpenButtonPuzzles/SwitchePuzzle")]
+buttonsOpenPuzzle = [NodePath("../../ButtonManager/OpenButtonPuzzles/OpenMathButton"), NodePath("../../ButtonManager/OpenButtonPuzzles/OpenLightButton"), NodePath("../../PuzzlesShowInstances/Error/Sprite2D/WinErrorButton"), NodePath("../../PuzzlesShowInstances/Error/Sprite2D2/MacError"), NodePath("../../ButtonManager/OpenButtonPuzzles/SwitchePuzzle"), NodePath("../../ButtonManager/OpenButtonPuzzles/OpenProgressBarButton")]
 disableButtons = [NodePath("../../DisableButtons/DisableMathButtonMain"), NodePath("../../DisableButtons/DisableLightButtonMain")]
+zoomProgressBars = [NodePath("../../PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript/ProgressBar1"), NodePath("../../PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript/ProgressBar2"), NodePath("../../PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript/ProgressBar3"), NodePath("../../PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript/ProgressBar4"), NodePath("../../PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript/ProgressBar5")]
 
 [node name="GameManager" type="Node2D" parent="Scripts" node_paths=PackedStringArray("timer", "damegeProgressBar", "remainingTimeLabel")]
 script = ExtResource("2_vhtfj")
@@ -319,41 +327,7 @@ process_callback = 0
 light_mask = 2
 visibility_layer = 2
 position = Vector2(589, 329)
-scale = Vector2(1, 1)
 texture = ExtResource("3_4281x")
-
-[node name="LeftPanels" type="Node2D" parent="Grafika"]
-position = Vector2(717.037, 64.6745)
-scale = Vector2(1, 1)
-
-[node name="Sprite2D" type="Sprite2D" parent="Grafika/LeftPanels"]
-position = Vector2(116.777, 150.137)
-scale = Vector2(0.230831, 0.121808)
-texture = ExtResource("4_46afm")
-
-[node name="ProgressBar2" type="ProgressBar" parent="Grafika/LeftPanels/Sprite2D"]
-offset_left = -280.711
-offset_top = -271.798
-offset_right = -108.746
-offset_bottom = 328.202
-scale = Vector2(0.463702, 0.838676)
-theme_override_styles/background = SubResource("StyleBoxFlat_alaqv")
-theme_override_styles/fill = SubResource("StyleBoxFlat_eid5s")
-value = 42.99
-fill_mode = 3
-metadata/_edit_use_anchors_ = true
-
-[node name="ProgressBar" type="ProgressBar" parent="Grafika/LeftPanels/Sprite2D"]
-offset_left = -444.202
-offset_top = -259.156
-offset_right = -272.237
-offset_bottom = 340.844
-scale = Vector2(0.444558, 0.801424)
-theme_override_styles/background = SubResource("StyleBoxFlat_alaqv")
-theme_override_styles/fill = SubResource("StyleBoxFlat_eid5s")
-value = 42.99
-fill_mode = 3
-metadata/_edit_use_anchors_ = true
 
 [node name="RemainingTime" type="Sprite2D" parent="Grafika"]
 position = Vector2(91.1427, 85.4627)
@@ -413,6 +387,169 @@ position = Vector2(835, 356)
 scale = Vector2(0.231, 0.226)
 texture = ExtResource("5_1tuxf")
 
+[node name="BarPanel" type="Node2D" parent="Grafika"]
+position = Vector2(717.037, 64.6745)
+
+[node name="BackGround" type="Sprite2D" parent="Grafika/BarPanel"]
+position = Vector2(116.777, 150.137)
+scale = Vector2(0.230831, 0.121808)
+texture = ExtResource("4_46afm")
+
+[node name="ProgressBar0" type="ProgressBar" parent="Grafika/BarPanel/BackGround"]
+offset_left = -450.0
+offset_top = -250.0
+offset_right = -270.0
+offset_bottom = 300.0
+scale = Vector2(0.5, 0.9)
+theme_override_styles/background = SubResource("StyleBoxFlat_alaqv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_eid5s")
+value = 42.99
+fill_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureButton0Up" type="TextureButton" parent="Grafika/BarPanel/BackGround/ProgressBar0"]
+layout_mode = 0
+offset_left = -1.79321
+offset_top = -158.781
+offset_right = 254.207
+offset_bottom = 97.2194
+scale = Vector2(0.7, 0.717)
+texture_normal = ExtResource("17_sx6k0")
+
+[node name="TextureButton0Down" type="TextureButton" parent="Grafika/BarPanel/BackGround/ProgressBar0"]
+layout_mode = 0
+offset_left = 179.218
+offset_top = 701.666
+offset_right = 435.218
+offset_bottom = 957.666
+rotation = 3.14159
+scale = Vector2(0.7, 0.717)
+texture_normal = ExtResource("17_sx6k0")
+
+[node name="ProgressBar2" type="ProgressBar" parent="Grafika/BarPanel/BackGround"]
+offset_left = -250.0
+offset_top = -250.0
+offset_right = -70.0
+offset_bottom = 300.0
+scale = Vector2(0.5, 0.9)
+theme_override_styles/background = SubResource("StyleBoxFlat_alaqv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_eid5s")
+value = 42.99
+fill_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureButton2Up" type="TextureButton" parent="Grafika/BarPanel/BackGround/ProgressBar2"]
+layout_mode = 0
+offset_left = -1.79321
+offset_top = -158.781
+offset_right = 254.207
+offset_bottom = 97.2194
+scale = Vector2(0.7, 0.717)
+texture_normal = ExtResource("17_sx6k0")
+
+[node name="TextureButton2Down" type="TextureButton" parent="Grafika/BarPanel/BackGround/ProgressBar2"]
+layout_mode = 0
+offset_left = 179.218
+offset_top = 701.666
+offset_right = 435.218
+offset_bottom = 957.666
+rotation = 3.14159
+scale = Vector2(0.7, 0.717)
+texture_normal = ExtResource("17_sx6k0")
+
+[node name="ProgressBar3" type="ProgressBar" parent="Grafika/BarPanel/BackGround"]
+offset_left = -50.0
+offset_top = -250.0
+offset_right = 130.0
+offset_bottom = 300.0
+scale = Vector2(0.5, 0.9)
+theme_override_styles/background = SubResource("StyleBoxFlat_alaqv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_eid5s")
+value = 42.99
+fill_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureButton3Up" type="TextureButton" parent="Grafika/BarPanel/BackGround/ProgressBar3"]
+layout_mode = 0
+offset_left = -1.79321
+offset_top = -158.781
+offset_right = 254.207
+offset_bottom = 97.2194
+scale = Vector2(0.7, 0.717)
+texture_normal = ExtResource("17_sx6k0")
+
+[node name="TextureButton3Down" type="TextureButton" parent="Grafika/BarPanel/BackGround/ProgressBar3"]
+layout_mode = 0
+offset_left = 179.218
+offset_top = 701.666
+offset_right = 435.218
+offset_bottom = 957.666
+rotation = 3.14159
+scale = Vector2(0.7, 0.717)
+texture_normal = ExtResource("17_sx6k0")
+
+[node name="ProgressBar4" type="ProgressBar" parent="Grafika/BarPanel/BackGround"]
+offset_left = 150.0
+offset_top = -250.0
+offset_right = 330.0
+offset_bottom = 300.0
+scale = Vector2(0.5, 0.9)
+theme_override_styles/background = SubResource("StyleBoxFlat_alaqv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_eid5s")
+value = 42.99
+fill_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureButton4Up" type="TextureButton" parent="Grafika/BarPanel/BackGround/ProgressBar4"]
+layout_mode = 0
+offset_left = -1.79321
+offset_top = -158.781
+offset_right = 254.207
+offset_bottom = 97.2194
+scale = Vector2(0.7, 0.717)
+texture_normal = ExtResource("17_sx6k0")
+
+[node name="TextureButton4Down" type="TextureButton" parent="Grafika/BarPanel/BackGround/ProgressBar4"]
+layout_mode = 0
+offset_left = 179.218
+offset_top = 701.666
+offset_right = 435.218
+offset_bottom = 957.666
+rotation = 3.14159
+scale = Vector2(0.7, 0.717)
+texture_normal = ExtResource("17_sx6k0")
+
+[node name="ProgressBar5" type="ProgressBar" parent="Grafika/BarPanel/BackGround"]
+offset_left = 350.0
+offset_top = -250.0
+offset_right = 530.0
+offset_bottom = 300.0
+scale = Vector2(0.5, 0.9)
+theme_override_styles/background = SubResource("StyleBoxFlat_alaqv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_eid5s")
+value = 42.99
+fill_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureButton5Up" type="TextureButton" parent="Grafika/BarPanel/BackGround/ProgressBar5"]
+layout_mode = 0
+offset_left = -1.79321
+offset_top = -158.781
+offset_right = 254.207
+offset_bottom = 97.2194
+scale = Vector2(0.7, 0.717)
+texture_normal = ExtResource("17_sx6k0")
+
+[node name="TextureButton5Down" type="TextureButton" parent="Grafika/BarPanel/BackGround/ProgressBar5"]
+layout_mode = 0
+offset_left = 179.218
+offset_top = 701.666
+offset_right = 435.218
+offset_bottom = 957.666
+rotation = 3.14159
+scale = Vector2(0.7, 0.717)
+texture_normal = ExtResource("17_sx6k0")
+
 [node name="Light" type="Node2D" parent="Grafika"]
 position = Vector2(-43, 213)
 script = ExtResource("6_twc5q")
@@ -444,14 +581,13 @@ texture = ExtResource("6_f1wty")
 
 [node name="Switches" type="Node2D" parent="Grafika" node_paths=PackedStringArray("buttonSwitches")]
 position = Vector2(-2.13616, 2.3098)
-scale = Vector2(1, 1)
 script = ExtResource("9_oi8m4")
 buttonSwitches = [NodePath("Switch1/switch1Button"), NodePath("switch2/switch2Button"), NodePath("switch3/switch3Button")]
 
 [node name="Switch1" type="AnimatedSprite2D" parent="Grafika/Switches"]
-position = Vector2(1019.66, 227.9)
+position = Vector2(991.906, 240.607)
 rotation = 2.26893
-scale = Vector2(0.109044, -0.178)
+scale = Vector2(0.267784, -0.253)
 skew = 0.872665
 sprite_frames = SubResource("SpriteFrames_eru48")
 animation = &"Down"
@@ -460,35 +596,36 @@ speed_scale = 0.1
 [node name="switch1Button" type="Button" parent="Grafika/Switches/Switch1"]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
-offset_left = -145.872
-offset_top = -356.541
-offset_right = -137.872
-offset_bottom = -348.541
-scale = Vector2(39.3112, 88.5353)
+offset_left = -345.009
+offset_top = -330.667
+offset_right = -337.009
+offset_bottom = -322.667
+scale = Vector2(32.2398, 61.4759)
 
 [node name="switch2" type="AnimatedSprite2D" parent="Grafika/Switches"]
-position = Vector2(242.81, 79.3032)
-rotation = -0.523599
-scale = Vector2(0.166109, 0.188208)
-skew = 0.523599
+position = Vector2(263.975, 67.8106)
+rotation = -0.294961
+scale = Vector2(0.185401, 0.188208)
+skew = 0.286234
 sprite_frames = SubResource("SpriteFrames_j8xnl")
 animation = &"up"
+frame_progress = 0.741684
 speed_scale = 0.1
 
 [node name="switch2Button" type="Button" parent="Grafika/Switches/switch2"]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
-offset_left = -113.845
-offset_top = -279.327
-offset_right = -105.845
-offset_bottom = -271.327
+offset_left = -350.912
+offset_top = -307.333
+offset_right = -337.912
+offset_bottom = -299.333
 scale = Vector2(29.9543, 68.7391)
 
 [node name="switch3" type="AnimatedSprite2D" parent="Grafika/Switches"]
-position = Vector2(1023.93, 386.507)
-rotation = -0.872665
-scale = Vector2(-0.129, 0.202)
-skew = 0.872665
+position = Vector2(1008.11, 389.924)
+rotation = -1.16763
+scale = Vector2(-0.179, 0.202)
+skew = 1.16239
 sprite_frames = SubResource("SpriteFrames_j8xnl")
 animation = &"up"
 speed_scale = 0.1
@@ -496,11 +633,11 @@ speed_scale = 0.1
 [node name="switch3Button" type="Button" parent="Grafika/Switches/switch3"]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
-offset_left = 154.572
-offset_top = -311.934
-offset_right = 162.572
-offset_bottom = -303.934
-scale = Vector2(-30.4524, 74.1887)
+offset_left = -3.87654
+offset_top = -257.191
+offset_right = 4.12346
+offset_bottom = -249.191
+scale = Vector2(-47.6662, 74.1887)
 
 [node name="Animation" type="Node2D" parent="Grafika"]
 script = ExtResource("7_37vhf")
@@ -570,10 +707,21 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_l3cd2")
 position = Vector2(0, -2)
 script = ExtResource("3_a40v4")
 
+[node name="OpenProgressBarButton" type="Node2D" parent="ButtonManager/OpenButtonPuzzles"]
+position = Vector2(0, 2)
+
+[node name="OpenProgressBarButton" type="Button" parent="ButtonManager/OpenButtonPuzzles/OpenProgressBarButton"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 700.937
+offset_top = 166.119
+offset_right = 708.937
+offset_bottom = 174.119
+scale = Vector2(33.4601, 12.5204)
+
 [node name="SwitchePuzzle" type="Node2D" parent="ButtonManager/OpenButtonPuzzles"]
 visible = false
 position = Vector2(0, 2)
-scale = Vector2(1, 1)
 
 [node name="OpenMathButton" type="Node2D" parent="ButtonManager/OpenButtonPuzzles"]
 position = Vector2(650.816, 240.68)
@@ -601,10 +749,11 @@ text = "
 
 "
 
-[node name="PuzzlesShowInstances" type="Node2D" parent="." node_paths=PackedStringArray("mathPuzzleNode", "lightPuzzlNode")]
+[node name="PuzzlesShowInstances" type="Node2D" parent="." node_paths=PackedStringArray("mathPuzzleNode", "lightPuzzlNode", "progressBarNode")]
 script = ExtResource("6_vk7do")
 mathPuzzleNode = NodePath("PuzzleMathPrefab")
 lightPuzzlNode = NodePath("PuzzleLightPrefab")
+progressBarNode = NodePath("PuzzleBarPanelPrefab")
 
 [node name="Error" type="Node2D" parent="PuzzlesShowInstances"]
 position = Vector2(-639.423, -9.23921)
@@ -892,6 +1041,189 @@ offset_top = 321.0
 offset_right = 890.0
 offset_bottom = 381.0
 
+[node name="PuzzleBarPanelPrefab" type="Node2D" parent="PuzzlesShowInstances" node_paths=PackedStringArray("puzzlePrefab")]
+visible = false
+script = ExtResource("5_kvdyx")
+puzzlePrefab = NodePath(".")
+
+[node name="BackButton" type="Button" parent="PuzzlesShowInstances/PuzzleBarPanelPrefab"]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 1256.0
+offset_bottom = 664.0
+
+[node name="Sprite2D" type="Sprite2D" parent="PuzzlesShowInstances/PuzzleBarPanelPrefab"]
+position = Vector2(566.033, 347.501)
+scale = Vector2(2.16878, 3.12776)
+texture = ExtResource("16_ydd5s")
+
+[node name="Sprite2D2" type="Sprite2D" parent="PuzzlesShowInstances/PuzzleBarPanelPrefab"]
+position = Vector2(564.172, 849.789)
+scale = Vector2(0.612587, 0.609689)
+texture = ExtResource("5_1tuxf")
+
+[node name="BarPuzzleScript" type="Sprite2D" parent="PuzzlesShowInstances/PuzzleBarPanelPrefab" node_paths=PackedStringArray("inSceneBars")]
+position = Vector2(564.768, 336.852)
+scale = Vector2(0.6148, 0.364044)
+texture = ExtResource("4_46afm")
+script = ExtResource("16_26gfy")
+inSceneBars = [NodePath("../../../Grafika/BarPanel/BackGround/ProgressBar0"), NodePath("../../../Grafika/BarPanel/BackGround/ProgressBar2"), NodePath("../../../Grafika/BarPanel/BackGround/ProgressBar3"), NodePath("../../../Grafika/BarPanel/BackGround/ProgressBar4"), NodePath("../../../Grafika/BarPanel/BackGround/ProgressBar5")]
+
+[node name="ProgressBar1" type="ProgressBar" parent="PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript"]
+offset_left = -450.0
+offset_top = -250.0
+offset_right = -270.0
+offset_bottom = 300.0
+scale = Vector2(0.5, 0.9)
+theme_override_styles/background = SubResource("StyleBoxFlat_alaqv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_eid5s")
+value = 42.99
+fill_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureButton1Up" type="TextureButton" parent="PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript/ProgressBar1"]
+layout_mode = 0
+offset_left = -1.79321
+offset_top = -158.781
+offset_right = 254.207
+offset_bottom = 97.2194
+scale = Vector2(0.7, 0.717)
+texture_normal = ExtResource("17_sx6k0")
+
+[node name="TextureButton1Down" type="TextureButton" parent="PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript/ProgressBar1"]
+layout_mode = 0
+offset_left = 179.218
+offset_top = 701.666
+offset_right = 435.218
+offset_bottom = 957.666
+rotation = 3.14159
+scale = Vector2(0.7, 0.717)
+texture_normal = ExtResource("17_sx6k0")
+
+[node name="ProgressBar2" type="ProgressBar" parent="PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript"]
+offset_left = -250.0
+offset_top = -250.0
+offset_right = -70.0
+offset_bottom = 300.0
+scale = Vector2(0.5, 0.9)
+theme_override_styles/background = SubResource("StyleBoxFlat_alaqv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_eid5s")
+value = 42.99
+fill_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureButton2Up" type="TextureButton" parent="PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript/ProgressBar2"]
+layout_mode = 0
+offset_left = -1.79321
+offset_top = -158.781
+offset_right = 254.207
+offset_bottom = 97.2194
+scale = Vector2(0.7, 0.717)
+texture_normal = ExtResource("17_sx6k0")
+
+[node name="TextureButton2Down" type="TextureButton" parent="PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript/ProgressBar2"]
+layout_mode = 0
+offset_left = 179.218
+offset_top = 701.666
+offset_right = 435.218
+offset_bottom = 957.666
+rotation = 3.14159
+scale = Vector2(0.7, 0.717)
+texture_normal = ExtResource("17_sx6k0")
+
+[node name="ProgressBar3" type="ProgressBar" parent="PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript"]
+offset_left = -50.0
+offset_top = -250.0
+offset_right = 130.0
+offset_bottom = 300.0
+scale = Vector2(0.5, 0.9)
+theme_override_styles/background = SubResource("StyleBoxFlat_alaqv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_eid5s")
+value = 42.99
+fill_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureButton3Up" type="TextureButton" parent="PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript/ProgressBar3"]
+layout_mode = 0
+offset_left = -1.79321
+offset_top = -158.781
+offset_right = 254.207
+offset_bottom = 97.2194
+scale = Vector2(0.7, 0.717)
+texture_normal = ExtResource("17_sx6k0")
+
+[node name="TextureButton3Down" type="TextureButton" parent="PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript/ProgressBar3"]
+layout_mode = 0
+offset_left = 179.218
+offset_top = 701.666
+offset_right = 435.218
+offset_bottom = 957.666
+rotation = 3.14159
+scale = Vector2(0.7, 0.717)
+texture_normal = ExtResource("17_sx6k0")
+
+[node name="ProgressBar4" type="ProgressBar" parent="PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript"]
+offset_left = 150.0
+offset_top = -250.0
+offset_right = 330.0
+offset_bottom = 300.0
+scale = Vector2(0.5, 0.9)
+theme_override_styles/background = SubResource("StyleBoxFlat_alaqv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_eid5s")
+value = 42.99
+fill_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureButton4Up" type="TextureButton" parent="PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript/ProgressBar4"]
+layout_mode = 0
+offset_left = -1.79321
+offset_top = -158.781
+offset_right = 254.207
+offset_bottom = 97.2194
+scale = Vector2(0.7, 0.717)
+texture_normal = ExtResource("17_sx6k0")
+
+[node name="TextureButton4Down" type="TextureButton" parent="PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript/ProgressBar4"]
+layout_mode = 0
+offset_left = 179.218
+offset_top = 701.666
+offset_right = 435.218
+offset_bottom = 957.666
+rotation = 3.14159
+scale = Vector2(0.7, 0.717)
+texture_normal = ExtResource("17_sx6k0")
+
+[node name="ProgressBar5" type="ProgressBar" parent="PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript"]
+offset_left = 350.0
+offset_top = -250.0
+offset_right = 530.0
+offset_bottom = 300.0
+scale = Vector2(0.5, 0.9)
+theme_override_styles/background = SubResource("StyleBoxFlat_alaqv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_eid5s")
+value = 42.99
+fill_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureButton5Up" type="TextureButton" parent="PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript/ProgressBar5"]
+layout_mode = 0
+offset_left = -1.79321
+offset_top = -158.781
+offset_right = 254.207
+offset_bottom = 97.2194
+scale = Vector2(0.7, 0.717)
+texture_normal = ExtResource("17_sx6k0")
+
+[node name="TextureButton5Down" type="TextureButton" parent="PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript/ProgressBar5"]
+layout_mode = 0
+offset_left = 179.218
+offset_top = 701.666
+offset_right = 435.218
+offset_bottom = 957.666
+rotation = 3.14159
+scale = Vector2(0.7, 0.717)
+texture_normal = ExtResource("17_sx6k0")
+
 [node name="DisableButtons" type="Node2D" parent="."]
 visible = false
 
@@ -959,6 +1291,35 @@ kfsd"
 [node name="Timer" type="Timer" parent="DisableButtons/DisableLightButtonMain/DisableButton"]
 process_callback = 0
 
+[node name="ScrewPuzzle" type="Node2D" parent="."]
+
+[node name="Sprite2D3" type="Sprite2D" parent="ScrewPuzzle"]
+position = Vector2(539.874, 123.545)
+scale = Vector2(0.168622, 0.0673168)
+skew = 0.420624
+texture = ExtResource("38_72ugg")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ScrewPuzzle"]
+position = Vector2(539.874, 123.545)
+scale = Vector2(0.168622, 0.0673168)
+skew = 0.420624
+texture = ExtResource("39_ghfq7")
+
+[node name="Table" type="Sprite2D" parent="ScrewPuzzle"]
+position = Vector2(1141.83, 542.598)
+texture = ExtResource("40_s16jy")
+
+[node name="Sprite2D4" type="Sprite2D" parent="ScrewPuzzle"]
+position = Vector2(576.326, 335.594)
+rotation = -0.301326
+scale = Vector2(1.51611, 1.27376)
+texture = ExtResource("41_7dlmn")
+
+[node name="Sprite2D" type="Sprite2D" parent="ScrewPuzzle"]
+position = Vector2(570.028, 353.959)
+scale = Vector2(1.51611, 1.27376)
+texture = ExtResource("42_3n51w")
+
 [connection signal="timeout" from="Scripts/GameManager/Timer" to="Scripts/GameManager" method="_on_timer_timeout"]
 [connection signal="timeout" from="Grafika/LightPanelShowingText/Timer" to="Grafika/LightPanelShowingText" method="_on_timer_timeout"]
 [connection signal="button_down" from="Grafika/Switches/Switch1/switch1Button" to="Grafika/Switches" method="_on_switch_1_button_button_down"]
@@ -967,6 +1328,7 @@ process_callback = 0
 [connection signal="pressed" from="Grafika/Switches/switch2/switch2Button" to="Grafika/Switches" method="_on_switch_2_button_pressed"]
 [connection signal="button_down" from="Grafika/Switches/switch3/switch3Button" to="Grafika/Switches" method="_on_switch_3_button_button_down"]
 [connection signal="pressed" from="Grafika/Switches/switch3/switch3Button" to="Grafika/Switches" method="_on_switch_3_button_pressed"]
+[connection signal="pressed" from="ButtonManager/OpenButtonPuzzles/OpenProgressBarButton/OpenProgressBarButton" to="ButtonManager/OpenButtonPuzzles" method="_on_open_progress_bar_button_pressed"]
 [connection signal="pressed" from="ButtonManager/OpenButtonPuzzles/OpenMathButton/OpenMathButton" to="ButtonManager/OpenButtonPuzzles" method="_on_open_math_button_pressed"]
 [connection signal="pressed" from="ButtonManager/OpenButtonPuzzles/OpenLightButton/OpenLightButton" to="ButtonManager/OpenButtonPuzzles" method="_on_open_light_button_pressed"]
 [connection signal="pressed" from="PuzzlesShowInstances/Error/Sprite2D/WinErrorButton/WinButton" to="PuzzlesShowInstances/Error" method="_on_win_button_pressed"]
@@ -982,6 +1344,17 @@ process_callback = 0
 [connection signal="pressed" from="PuzzlesShowInstances/PuzzleLightPrefab/PuzzleLightScript/LightButton3/LightButton3" to="PuzzlesShowInstances/PuzzleLightPrefab/PuzzleLightScript" method="_on_light_button_3_pressed"]
 [connection signal="pressed" from="PuzzlesShowInstances/PuzzleLightPrefab/PuzzleLightScript/LightButton4/LightButton4" to="PuzzlesShowInstances/PuzzleLightPrefab/PuzzleLightScript" method="_on_light_button_4_pressed"]
 [connection signal="pressed" from="PuzzlesShowInstances/PuzzleLightPrefab/PuzzleLightScript/LightButton5/LightButton5" to="PuzzlesShowInstances/PuzzleLightPrefab/PuzzleLightScript" method="_on_light_button_5_pressed"]
+[connection signal="pressed" from="PuzzlesShowInstances/PuzzleBarPanelPrefab/BackButton" to="PuzzlesShowInstances/PuzzleBarPanelPrefab" method="_on_back_button_pressed"]
+[connection signal="pressed" from="PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript/ProgressBar1/TextureButton1Up" to="PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript" method="_on_texture_button_1_up_pressed"]
+[connection signal="pressed" from="PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript/ProgressBar1/TextureButton1Down" to="PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript" method="_on_texture_button_1_down_pressed"]
+[connection signal="pressed" from="PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript/ProgressBar2/TextureButton2Up" to="PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript" method="_on_texture_button_2_up_pressed"]
+[connection signal="pressed" from="PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript/ProgressBar2/TextureButton2Down" to="PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript" method="_on_texture_button_2_down_pressed"]
+[connection signal="pressed" from="PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript/ProgressBar3/TextureButton3Up" to="PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript" method="_on_texture_button_3_up_pressed"]
+[connection signal="pressed" from="PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript/ProgressBar3/TextureButton3Down" to="PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript" method="_on_texture_button_3_down_pressed"]
+[connection signal="pressed" from="PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript/ProgressBar4/TextureButton4Up" to="PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript" method="_on_texture_button_4_up_pressed"]
+[connection signal="pressed" from="PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript/ProgressBar4/TextureButton4Down" to="PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript" method="_on_texture_button_4_down_pressed"]
+[connection signal="pressed" from="PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript/ProgressBar5/TextureButton5Up" to="PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript" method="_on_texture_button_5_up_pressed"]
+[connection signal="pressed" from="PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript/ProgressBar5/TextureButton5Down" to="PuzzlesShowInstances/PuzzleBarPanelPrefab/BarPuzzleScript" method="_on_texture_button_5_down_pressed"]
 [connection signal="visibility_changed" from="DisableButtons/DisableMathButtonMain" to="DisableButtons/DisableMathButtonMain/DisableButton" method="_on_disable_math_button_main_visibility_changed"]
 [connection signal="timeout" from="DisableButtons/DisableMathButtonMain/DisableButton/Timer" to="DisableButtons/DisableMathButtonMain/DisableButton" method="_on_timer_timeout"]
 [connection signal="visibility_changed" from="DisableButtons/DisableLightButtonMain" to="DisableButtons/DisableLightButtonMain/DisableButton" method="_on_disable_math_button_main_visibility_changed"]

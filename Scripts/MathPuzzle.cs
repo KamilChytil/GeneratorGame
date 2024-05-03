@@ -43,7 +43,7 @@ public partial class MathPuzzle :  Puzzle
 		textMathPuzzle.Text = PuzzlesData.i.mathNumber1.ToString() + " - ? * " + PuzzlesData.i.mathNumber2.ToString() + " = " + PuzzlesData.i.mathNumber3.ToString();
 
 
-    }
+	}
 
 
 
@@ -88,13 +88,13 @@ public partial class MathPuzzle :  Puzzle
 			PuzzlesShowInstances.i.mathPuzzleNode.Visible = false;
 			PuzzlesData.i.buttonsOpenPuzzle[0].Visible = false;
 			PuzzlesData.i.damageGeneratorPerSec -= 3;
-            
-        }
+			
+		}
 		else
 		{
 			PuzzlesData.i.isMathCombinationGenerate = true;
-            PuzzlesShowInstances.i.mathPuzzleNode.Visible = false;
-            
+			PuzzlesShowInstances.i.mathPuzzleNode.Visible = false;
+			
 			PuzzlesData.i.disableButtons[0].Visible = true;
 
 		}

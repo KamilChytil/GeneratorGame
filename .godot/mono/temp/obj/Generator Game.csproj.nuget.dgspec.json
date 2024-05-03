@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Hry\\Godot\\GeneratorGame\\Generator Game.csproj": {}
+    "C:\\HRY\\GODOT\\GENERATORGAME\\Generator Game.csproj": {}
   },
   "projects": {
-    "C:\\Hry\\Godot\\GeneratorGame\\Generator Game.csproj": {
+    "C:\\HRY\\GODOT\\GENERATORGAME\\Generator Game.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Hry\\Godot\\GeneratorGame\\Generator Game.csproj",
+        "projectUniqueName": "C:\\HRY\\GODOT\\GENERATORGAME\\Generator Game.csproj",
         "projectName": "Generator Game",
-        "projectPath": "C:\\Hry\\Godot\\GeneratorGame\\Generator Game.csproj",
+        "projectPath": "C:\\HRY\\GODOT\\GENERATORGAME\\Generator Game.csproj",
         "packagesPath": "C:\\Users\\Kamil\\.nuget\\packages\\",
-        "outputPath": "C:\\Hry\\Godot\\GeneratorGame\\.godot\\mono\\temp\\obj\\",
+        "outputPath": "C:\\HRY\\GODOT\\GENERATORGAME\\.godot\\mono\\temp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

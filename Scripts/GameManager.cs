@@ -25,7 +25,7 @@ public partial class GameManager : Node2D
 
 	private int reaperDamage;
 
-	private int[] howMuchPuzzleGenerateDamage = new int[5];
+	private int[] howMuchPuzzleGenerateDamage = new int[6];
 
 	public override void _Ready()
 	{
@@ -64,7 +64,7 @@ public partial class GameManager : Node2D
 					isPuzzleVisible = PuzzlesData.i.buttonsOpenPuzzle[choosePuzzle].Visible;
 					if (!isPuzzleVisible)
 					{
-						if(choosePuzzle < 2 || choosePuzzle == 4)
+						if(choosePuzzle < 2 || choosePuzzle >= 4)
 						{
 							PuzzlesData.i.buttonsOpenPuzzle[choosePuzzle].Visible = true;
 							CreateCombination(choosePuzzle);
@@ -110,13 +110,6 @@ public partial class GameManager : Node2D
 			{
 				FiveLightAnimation.SpeedAnimation();
 				FiveLightAnimation.whenSpeedAnimation -= 60;
-			}
-
-			if(damegeProgressBar.Value  >= 0)
-			{
-				//damegeProgressBar.Value += PuzzlesData.i.damageGeneratorPerSec;
-				//reaperDamage += PuzzlesData.i.damageGeneratorPerSec;
-
 			}
 			else if (damegeProgressBar.Value < 0)
 			{
@@ -171,8 +164,13 @@ public partial class GameManager : Node2D
                 PuzzlesData.i.damageGeneratorPerSec += 2;
 
                 break;
+            case 5:
+                BarPuzzle.i.CreatePuzzleCombination();
+                PuzzlesData.i.damageGeneratorPerSec += 3;
 
-		}
+                break;
+
+        }
 	}
 
 
@@ -191,7 +189,7 @@ public partial class GameManager : Node2D
 		for (int i = 0; i < howMuchPuzzleGenerateDamage.Length; i++)
 		{
 
-			if(i < 2 || i ==4)
+			if(i < 2 || i >=4)
 			{
 				if (howMuchPuzzleGenerateDamage[i] > 0)
 				{

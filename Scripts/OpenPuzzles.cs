@@ -49,11 +49,25 @@ public partial class OpenPuzzles : Node2D
 	}
 
 
+	private void _on_open_progress_bar_button_pressed()
+	{
+		if(PuzzlesShowInstances.i.progressBarNode.Visible == false)
+		{
+			PuzzlesShowInstances.i.progressBarNode.Visible = true;
+		}
+		else
+		{
+			PuzzlesShowInstances.i.progressBarNode.Visible = false;
+
+		}
+	}
 
 
 
 
 }
+
+
 
 
 

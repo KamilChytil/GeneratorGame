@@ -12,7 +12,8 @@ public partial class PuzzlesShowInstances : Node2D
 	public Node2D mathPuzzleNode;
 	[Export]
 	public Node2D lightPuzzlNode;
-
+	[Export]
+	public Node2D progressBarNode;
 	public override void _Ready()
 	{
 		i = this;
@@ -23,6 +24,7 @@ public partial class PuzzlesShowInstances : Node2D
 	{
 		mathPuzzleNode.Visible = false;
 		lightPuzzlNode.Visible = false;
+		progressBarNode.Visible = false;
 	}
 
 

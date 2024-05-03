@@ -1,9 +1,10 @@
+Sprite2D
 Node2D
 Button
+TextureButton
 AnimatedSprite2D
 TextureProgressBar
 ProgressBar
-Sprite2D
 SubViewport
 VideoStreamPlayer
 HBoxContainer
@@ -11,4 +12,3 @@ CanvasLayer
 Timer
 CPUParticles2D
 Label
-TabBar
