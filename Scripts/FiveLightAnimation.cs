@@ -12,7 +12,7 @@ public partial class FiveLightAnimation : Node2D
 	public static int whenSpeedAnimation;
 	public override void _Ready()
 	{
-		whenSpeedAnimation = 240;
+		whenSpeedAnimation = 110;
 		var animationNode = GetChildren();
 		if (animationNode != null)
 		{

@@ -72,7 +72,7 @@ public partial class Switches : Puzzle
 		if (PuzzlesData.i.isLeversUp == true)
 		{
 			switchesAnim[firstSwitch].SetFrameAndProgress(1, 0f);
-			switchesAnim[firstSwitch].SetFrameAndProgress(1, 0f);
+			switchesAnim[secondSwitch].SetFrameAndProgress(1, 0f);
 
 
 

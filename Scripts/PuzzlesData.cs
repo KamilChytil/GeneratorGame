@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 
 public partial class PuzzlesData : Node
 {
@@ -22,17 +23,22 @@ public partial class PuzzlesData : Node
 	public bool isLeversUp = false;
 
 	[Export]
-	public Node2D[] buttonsOpenPuzzle = new Node2D[6];
+	public Node2D[] buttonsOpenPuzzle = new Node2D[7];
 
 	[Export]
 	public Node2D[] disableButtons = new Node2D[2];
 
-	public int damageGeneratorPerSec;
 
 
+	[Export]
+	public Node2D tutorialShow;
 
     [Export]
     public ProgressBar[] zoomProgressBars = new ProgressBar[5];
+
+	[Export]
+	public Node2D[] winAndLoseNodes = new Node2D[2]; 
+
 
     public override void _Ready()
 	{

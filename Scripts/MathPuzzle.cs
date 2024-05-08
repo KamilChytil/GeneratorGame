@@ -14,12 +14,11 @@ public partial class MathPuzzle :  Puzzle
 	public Label textMathPuzzle;
 
 
-
-	public override void _Ready()
+    public override void _Ready()
 	{
 		iMathPuzzle = this;
-		
-	}
+
+    }
 
 
 	public override void CreatePuzzleCombination()
@@ -34,7 +33,6 @@ public partial class MathPuzzle :  Puzzle
 			GenerateNumber(ref PuzzlesData.i.mathNumber2);
 			GenerateNumber(ref PuzzlesData.i.mathNumber3);
 
-			GD.Print("PuzzlesData.i.mathNumberPlayerFound:" + PuzzlesData.i.mathNumberPlayerFound);
 			float tempResult = (float)(PuzzlesData.i.mathNumber1 - PuzzlesData.i.mathNumber3) / PuzzlesData.i.mathNumber2;
 			PuzzlesData.i.mathNumberPlayerFound = tempResult;
 
@@ -87,7 +85,6 @@ public partial class MathPuzzle :  Puzzle
 			PuzzlesData.i.isMathCombinationGenerate = false;
 			PuzzlesShowInstances.i.mathPuzzleNode.Visible = false;
 			PuzzlesData.i.buttonsOpenPuzzle[0].Visible = false;
-			PuzzlesData.i.damageGeneratorPerSec -= 3;
 			
 		}
 		else

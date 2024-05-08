@@ -62,10 +62,24 @@ public partial class OpenPuzzles : Node2D
 		}
 	}
 
+	private void _on_open_simon_button_pressed()
+	{
+		if (PuzzlesShowInstances.i.simonPuzzleNode.Visible == false)
+		{
+			PuzzlesShowInstances.i.simonPuzzleNode.Visible = true;
+		}
+		else
+		{
+			PuzzlesShowInstances.i.simonPuzzleNode.Visible = false;
 
+		}
+	}
 
 
 }
+
+
+
 
 
 

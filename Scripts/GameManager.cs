@@ -10,7 +10,7 @@ public partial class GameManager : Node2D
 	[Export]
 	public Timer timer;
 
-	private float remainingTime = 300;
+	private float remainingTime = 180;
 
 	private float timerWhenPuzzleHappend = 5;
 
@@ -25,20 +25,95 @@ public partial class GameManager : Node2D
 
 	private int reaperDamage;
 
-	private int[] howMuchPuzzleGenerateDamage = new int[6];
+	private float[] howMuchPuzzleGenerateDamage = new float[7];
 
+	[Export]
+	public Timer timerForDamageGenerator;
+
+
+	[Export]
+	public Sprite2D backGroundChangeColor;
+	private bool isIncreasing = true;
+	private float elapsedTime = 0.0f;
+
+	private bool isTimerStart = false;
 	public override void _Ready()
 	{
+
 		timerWhenPuzzleHappend = 5;
+		isTimerStart = false;
 
-		timer.Start();
-
+		PuzzlesData.i.tutorialShow.Visible = true;
+		
 	}
+
+
+	private void _on_tutorial_paper_hidden()
+	{
+		if(isTimerStart == false)
+		{
+			timer.Start();
+			timerForDamageGenerator.Start();
+			isTimerStart = true;
+
+		}
+	}
+
+
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 	}
+
+	private void _on_timer_2_timeout()
+	{
+		GenerateDamageGeneratePerSecond();
+
+		if(damegeProgressBar.Value >= 70f)
+		{
+			VarningBackGround();
+
+		}
+
+	}
+
+	private void VarningBackGround()
+	{
+		if(isIncreasing == true)
+		{
+			elapsedTime += 0.2f;
+
+
+		}
+		else
+		{
+			elapsedTime -= 0.2f;
+
+		}
+
+		if (elapsedTime >= 1.0f)
+		{
+			isIncreasing = false;
+		}
+		else if (elapsedTime <= 0.0f)
+		{
+			isIncreasing = true; 
+		}
+
+		Color newColor = Color.FromHsv(0, elapsedTime/3, 1f); 
+
+		backGroundChangeColor.Modulate = newColor;
+
+
+		if (damegeProgressBar.Value < 60f)
+		{
+			backGroundChangeColor.Modulate = new Color(1f, 1f, 1f);
+
+		}
+	}
+
+
 
 	public void _on_timer_timeout()
 	{
@@ -53,7 +128,8 @@ public partial class GameManager : Node2D
 
 			if (timerWhenPuzzleHappend <= 0)
 			{
-				timerWhenPuzzleHappend = 5;
+				SetWhenPuzzleHappend();
+
 
 				int choosePuzzle;
 				bool isPuzzleVisible;
@@ -64,7 +140,7 @@ public partial class GameManager : Node2D
 					isPuzzleVisible = PuzzlesData.i.buttonsOpenPuzzle[choosePuzzle].Visible;
 					if (!isPuzzleVisible)
 					{
-						if(choosePuzzle < 2 || choosePuzzle >= 4)
+						if(choosePuzzle < 2 || choosePuzzle >= 4 && choosePuzzle <6)
 						{
 							PuzzlesData.i.buttonsOpenPuzzle[choosePuzzle].Visible = true;
 							CreateCombination(choosePuzzle);
@@ -72,14 +148,14 @@ public partial class GameManager : Node2D
 							StartDamageGenerate(choosePuzzle);
 
 						}
-						else if(choosePuzzle >= 2 && choosePuzzle <= 3)
+						else if(choosePuzzle >= 2 && choosePuzzle <= 3 || choosePuzzle == 6)
 						{
 
-                            PuzzlesData.i.buttonsOpenPuzzle[choosePuzzle].Visible = true;
-                            StartDamageGenerate(choosePuzzle);
+							PuzzlesData.i.buttonsOpenPuzzle[choosePuzzle].Visible = true;
+							StartDamageGenerate(choosePuzzle);
 
-                        }
-                    }
+						}
+					}
 
 					int allPuzzleOn = 0;
 					for (int i = 0; i < PuzzlesData.i.buttonsOpenPuzzle.Count(); i++)
@@ -104,17 +180,13 @@ public partial class GameManager : Node2D
 
 			UpdateTimerDisplay();
 
-			GenerateDamageGeneratePerSecond();
 
 			if (remainingTime == FiveLightAnimation.whenSpeedAnimation && FiveLightAnimation.whenSpeedAnimation >0)
 			{
 				FiveLightAnimation.SpeedAnimation();
-				FiveLightAnimation.whenSpeedAnimation -= 60;
+				FiveLightAnimation.whenSpeedAnimation -= 40;
 			}
-			else if (damegeProgressBar.Value < 0)
-			{
-				damegeProgressBar.Value = 0;
-			}
+
 		
 
 			
@@ -141,7 +213,8 @@ public partial class GameManager : Node2D
 
 	private void OnTimerEnd()
 	{
-		GD.Print("No TIme!");
+		PuzzlesData.i.winAndLoseNodes[0].Visible = true;
+		//GetTree().Paused = true;
 	}
 
 
@@ -151,26 +224,22 @@ public partial class GameManager : Node2D
 		{
 			case 0:
 				MathPuzzle.iMathPuzzle.CreatePuzzleCombination();
-				PuzzlesData.i.damageGeneratorPerSec += 3;
 
 				break;
 			case 1:
 				LightPuzzle.iLightPuzzle.CreatePuzzleCombination();
-				PuzzlesData.i.damageGeneratorPerSec += 2;
 				LightOffOn.SetLightToWhite();
 				break;
 			case 4:
 				Switches.iSwitches.CreatePuzzleCombination();
-                PuzzlesData.i.damageGeneratorPerSec += 2;
 
-                break;
-            case 5:
-                BarPuzzle.i.CreatePuzzleCombination();
-                PuzzlesData.i.damageGeneratorPerSec += 3;
+				break;
+			case 5:
+				BarPuzzle.i.CreatePuzzleCombination();
 
-                break;
+				break;
 
-        }
+		}
 	}
 
 
@@ -178,13 +247,13 @@ public partial class GameManager : Node2D
 	private void StartDamageGenerate(int choosePuzzle)
 	{
 			
-		howMuchPuzzleGenerateDamage[choosePuzzle] += 1;
-		damegeProgressBar.Value += 1;
+		howMuchPuzzleGenerateDamage[choosePuzzle] += 0.1f;
+		damegeProgressBar.Value += 0.1f;
 
-    }
+	}
 
 
-    private void GenerateDamageGeneratePerSecond()
+	private void GenerateDamageGeneratePerSecond()
 	{
 		for (int i = 0; i < howMuchPuzzleGenerateDamage.Length; i++)
 		{
@@ -194,8 +263,8 @@ public partial class GameManager : Node2D
 				if (howMuchPuzzleGenerateDamage[i] > 0)
 				{
 
-					howMuchPuzzleGenerateDamage[i] += 2;
-					damegeProgressBar.Value += 2;
+					howMuchPuzzleGenerateDamage[i] += 0.2f;
+					damegeProgressBar.Value += 0.2f;
 
 					RemoveDamageGenerator(i);
 
@@ -204,19 +273,30 @@ public partial class GameManager : Node2D
 			}
 			else if ( i >= 2 && i < 4)
 
-            {
-                if (howMuchPuzzleGenerateDamage[i] > 0)
-                {
+			{
+				if (howMuchPuzzleGenerateDamage[i] > 0)
+				{
 
-                    howMuchPuzzleGenerateDamage[i] += 1;
-                    damegeProgressBar.Value += 1;
+					howMuchPuzzleGenerateDamage[i] += 0.1f;
+					damegeProgressBar.Value += 0.1f;
 
-                    RemoveDamageGenerator(i);
+					RemoveDamageGenerator(i);
 
-                }
+				}
 
-            }
-        }
+			}
+		}
+		if (damegeProgressBar.Value <= 0f)
+		{
+			damegeProgressBar.Value = 0f;
+		}
+
+		if(damegeProgressBar.Value >= 100)
+		{
+
+			PuzzlesData.i.winAndLoseNodes[1].Visible = true;
+			//GetTree().Paused = true;
+		}
 	}
 
 
@@ -229,11 +309,40 @@ public partial class GameManager : Node2D
 			howMuchPuzzleGenerateDamage[i] -= howMuchPuzzleGenerateDamage[i];
 
 
+
+		}
+
+	}
+
+	private void SetWhenPuzzleHappend()
+	{
+		if (remainingTime > 130)
+		{
+			timerWhenPuzzleHappend = 5;
+
+		}
+		else if(remainingTime < 130 && remainingTime > 70)
+		{
+			timerWhenPuzzleHappend = 4;
+
+		}
+		else if(remainingTime < 70 && remainingTime >25)
+		{
+			timerWhenPuzzleHappend = 3;
+
+		}
+		else
+		{
+			timerWhenPuzzleHappend = 2;
 		}
 	}
 
 
 }
+
+
+
+
 
 
 

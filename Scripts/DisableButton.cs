@@ -43,7 +43,7 @@ public partial class DisableButton : Node
 		if (buttonOpenDisable.Disabled == false && buttonWasEnabled == true)
 		{
 			timerCountDown.Visible = true;
-
+			GD.Print("disaBLEMATH");
 			timer.Start();
 			buttonOpenDisable.Disabled = true;
 			buttonWasEnabled = false;

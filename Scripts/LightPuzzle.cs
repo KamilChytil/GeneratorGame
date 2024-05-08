@@ -106,7 +106,14 @@ public partial class LightPuzzle : Puzzle
 
 	public override void CreatePuzzleCombination()
 	{
-		if(PuzzlesData.i.isLeversUp == false)
+
+		for (int i = 0; i < switchLight.Length;i++)
+		{
+			ChangeColorToWhite(switchLight[i]);
+			buttonsWorkWithLight[i].Visible = true;
+		}
+
+		if (PuzzlesData.i.isLeversUp == false)
 		{
 
 			lightCombination = new List<int> { 4, 2, 1, 3, 0 };
